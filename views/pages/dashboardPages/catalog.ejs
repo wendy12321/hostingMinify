@@ -1,0 +1,92 @@
+<h3>Katalog</h3>
+<div style="border-bottom: 2px solid gray; padding-bottom: 2%">
+  <div class="nav nav-tabs" id="nav-add-productncategory" role="tablist">
+    <button data-bs-toggle="tab" data-bs-target="#list-add-product">
+      Add Product
+    </button>
+    <div style="width: 2%"></div>
+    <button data-bs-toggle="tab" data-bs-target="#list-add-category">
+      Add Category/Brand
+    </button>
+    <div style="width: 2%"></div>
+    <button
+      class="btn btn-danger badge"
+      data-bs-toggle="tab"
+      data-bs-target="#list-delete-product"
+    >
+      Delete Product
+    </button>
+    <div style="width: 2%"></div>
+    <button
+      class="btn btn-danger badge"
+      data-bs-toggle="tab"
+      data-bs-target="#list-delete-category"
+    >
+      Delete Category/Brand
+    </button>
+    <button
+      id="backToCatalog"
+      data-bs-toggle="tab"
+      data-bs-target="#list-catalog"
+      style="display: none"
+    ></button>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-5 col-lg-3">
+    <h5>Filter</h5>
+    <form action="/filterProduct" method="PUT" id="filter">
+      <button type="submit" id="applyFilter">Terapkan</button>
+      <ul style="list-style: none">
+        <li>
+          <input type="checkbox" name="stock" value="kosong" />
+          Stok Kosong
+        </li>
+        <% categories.forEach(c => { %>
+        <li>
+          <input type="checkbox" name="category" value="<%= c.nama %>" />
+          <%= c.nama %>
+        </li>
+        <% }) %>
+        <li><b> Merk</b></li>
+        <% brands.forEach(b => { %>
+        <li>
+          <input
+            id="brandFilter"
+            type="checkbox"
+            name="brand"
+            value="<%= b.nama %>"
+          />
+          <%= b.nama %>
+        </li>
+        <% }) %>
+      </ul>
+    </form>
+  </div>
+  <div class="col mx-2">
+    <div
+      class="row row-cols-1 row-cols-lg-3 col-rows-lg-1 g-3"
+      style="max-height: 370px; overflow: auto; border-left: 2px solid gray"
+    >
+      <!-- items -->
+      <% products.forEach(p => { %>
+      <div class="col">
+        <a href="../editProduct.html" class="card">
+          <div style="margin: 0 auto; height: 50%">
+            <img class="card-img-top" src="image/Asus.jpg" alt="..." />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title"><%= p.name %></h4>
+            <h5 class="card-text">Rp. <%= p.price %></h5>
+            <p>
+              <i data-feather="star" style="vertical-align: bottom"></i>
+              <%= p.rating %> | Stok : <%= p.stock %>
+            </p>
+          </div>
+        </a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>

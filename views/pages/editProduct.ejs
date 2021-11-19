@@ -1,0 +1,92 @@
+<style>
+    #editProduct {
+        width: 80%;
+        margin: 2% auto 0;
+        padding: 2% 3%;
+        box-shadow: 0 0 10px black;
+    }
+
+    #editProduct div {
+        padding: 3% 0;
+        border-bottom: 1px solid rgb(200, 200, 200);
+    }
+</style>
+
+<section>
+    <div id="editProduct">
+        <h2>Edit Produk</h2>
+        <form action="" class="container" onsubmit="return false">
+            <div class="row">
+                <p class="col-lg-2">Nama Produk :</p>
+                <input class="col" type="text" name="namaProduk" />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Harga :</p>
+                <input class="col" type="number" name="hargaProduk" />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Kategori :</p>
+                <select class="col" name="kategoriProduk" id="">
+                    <option value="Komputer">Komputer</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Aksesoris">Aksesoris</option>
+                    <option value="LainLain">Lain-lain</option>
+                </select>
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Merk :</p>
+                <select class="col" name="kategoriProduk" id="">
+                    <option value="Asus">Asus</option>
+                    <option value="Acer">Acer</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Msi">Msi</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Hp">Hp</option>
+                </select>
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Stok :</p>
+                <input class="col" type="number" name="StokProduk" />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Foto Produk :</p>
+                <input class="col" type="file" name="fotoProduk" />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Deskripsi :</p>
+                <textarea
+                    class="col"
+                    name="deskripsiProduk"
+                    id=""
+                    cols="50"
+                    rows="10"
+                    style="vertical-align: text-top"
+                ></textarea>
+            </div>
+            <section class="row my-2">
+                <p class="col-lg-2"></p>
+                <input
+                    id="edit-product-submit"
+                    class="col-lg-2"
+                    type="submit"
+                    value="Edit Produk"
+                />
+                <button
+                    type="button"
+                    onclick="history.back();"
+                    class="col-lg-2 my-2 my-lg-0 mx-lg-3 btn btn-danger"
+                >
+                    Cancel
+                </button>
+            </section>
+        </form>
+    </div>
+</section>
+
+<script>
+    $("#edit-product-submit").click(function () {
+        if (confirm("Simpan perubahan?")) {
+            window.location.href = "Dashboard.html";
+        }
+    });
+</script>

@@ -1,0 +1,96 @@
+<style>
+    #profile {
+        width: 80%;
+        margin: 2% auto 0;
+        padding: 2% 3%;
+        box-shadow: 0 0 10px black;
+    }
+
+    #profile .chat-avatar {
+        width: 50px;
+        margin: 2%;
+        border-radius: 100%;
+        border: 1px solid gray;
+        background-color: white;
+    }
+
+    #profile .head {
+        align-items: center;
+        display: flex;
+        padding-bottom: 1%;
+        margin-bottom: 1%;
+        border-bottom: 2px solid rgb(180, 180, 180);
+    }
+    #profile .body p {
+        padding: 1% 2%;
+
+        border-bottom: 1px solid rgb(200, 200, 200);
+    }
+</style>
+
+<section>
+    <div id="profile">
+        <div class="head">
+            <img src="image/user.svg" class="chat-avatar" alt="..." />
+
+            <div>
+                <h3>Budi Ahmad13995</h3>
+                <h6>budi_ahmad13995@gmail.com</h6>
+            </div>
+            <div style="margin-left: auto">
+                <a
+                    type="button"
+                    href="editProfile.html"
+                    class="btn btn-outline-dark"
+                    title="Edit Profile"
+                    ><i data-feather="edit"></i
+                ></a>
+            </div>
+        </div>
+        <div class="body">
+            <p><b> No. Handphone : </b> 08xx xxxx xxxx</p>
+            <p><b>Jenis Kelamin : </b> Pria</p>
+            <p><b>Tanggal Lahir : </b> xx/xx/xxxx</p>
+            <p><b>Password : </b> xxxxxxx</p>
+            <div>
+                <p>
+                    <span><b>Alamat : </b> </span>
+                    <select name="" id="selectAlamat">
+                        <option
+                            class="optionAlamat"
+                            value="jl.xxxx xxxx komplek xxxx 1"
+                        >
+                            Alamat 1
+                        </option>
+                        <option
+                            class="optionAlamat"
+                            value="jl.xxxx xxxx komplek xxxx 2"
+                        >
+                            Alamat 2
+                        </option>
+                        <option
+                            class="optionAlamat"
+                            value="jl.xxxx xxxx komplek xxxx 3"
+                        >
+                            Alamat 3
+                        </option>
+                    </select>
+                </p>
+                <p id="viewAlamat">jl.xxxx xxxx komplek xxxx</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#selectAlamat")
+        .change(function () {
+            var str = "";
+            $("select option:selected").each(function () {
+                str = $(this).val();
+            });
+            $("#viewAlamat").empty();
+            $("#viewAlamat").text(str);
+        })
+        .trigger("change");
+</script>

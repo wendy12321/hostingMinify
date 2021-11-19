@@ -1,0 +1,460 @@
+<style>
+  .jc-sb {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ta-c {
+    text-align: center;
+  }
+  .td a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .product {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+
+  .prodimage {
+    width: 50%;
+  }
+
+  .main-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+  }
+
+  .image-option {
+    width: 24%;
+  }
+
+  .reviewbox,
+  .descbox {
+    width: 100%;
+  }
+
+  .prodreview {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+  }
+
+  .prodreview,
+  .proddesc {
+    width: 70%;
+  }
+
+  .prodetail {
+    margin-left: 20%;
+  }
+
+  .secmargin {
+    background-color: rgb(175, 175, 175);
+
+    padding: 5%;
+  }
+
+  .image-option:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .next {
+    position: absolute;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-120%, 250%);
+    border: none;
+    font-weight: bold;
+  }
+
+  .prev {
+    position: absolute;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-1050%, 250%);
+    border: none;
+    font-weight: bold;
+  }
+
+  #showmore {
+    display: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  @media screen and (max-width: 800px) {
+    .product {
+      display: block;
+    }
+
+    .prodimage {
+      width: 100%;
+      margin-bottom: 5%;
+    }
+
+    .reviewbox,
+    .descbox {
+      width: 100%;
+    }
+    .prodreview,
+    .proddesc {
+      width: 100%;
+    }
+    .main-image {
+      width: 100%;
+    }
+
+    .prodetail {
+      margin-left: 0;
+    }
+
+    .secmargin {
+      margin: 10% 10%;
+    }
+  }
+</style>
+
+<section style="background-color: grey; padding: 5%">
+  <div class="secmargin">
+    <div class="mb-4 product">
+      <% products(function(items){ %>
+      <!-- Image -->
+      <div class="prodimage">
+        <!-- Image view -->
+        <section>
+          <div class="mb-3">
+            <img
+              src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+              alt="image"
+              class="main-image"
+              id="expandedImg"
+            />
+          </div>
+        </section>
+
+        <!-- Image Option -->
+        <div>
+          <img
+            src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+            alt="image"
+            class="image-option"
+            onclick="image(this);"
+          />
+          <img
+            src="/image/alienware-Bp3KmTZQlfw-unsplash.jpg"
+            alt="image"
+            class="image-option"
+            onclick="image(this);"
+          />
+          <img
+            src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+            alt="image"
+            class="image-option"
+            onclick="image(this);"
+          />
+          <img
+            src="/image/alienware-Bp3KmTZQlfw-unsplash.jpg"
+            alt="image"
+            class="image-option"
+            onclick="image(this);"
+          />
+        </div>
+      </div>
+      <!-- Product Details -->
+      <div class="prodetail">
+        <h4><b><%= items.item.name %></b></h4>
+        <div class="jc-sb mb-3">
+          <p>(5.0/5.0)</p>
+          <div style="display: flex; margin-left: 5px">
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+        </div>
+        <div class="jc-sb mb-3">
+          <input
+            class="btn btn-primary"
+            type="button"
+            onclick="downFunc()"
+            value="-"
+            style="background-color: white; color: black; border: none"
+          />
+          <input
+            type="number"
+            value="1"
+            id="count"
+            style="
+              width: 25%;
+              background-color: rgb(175, 175, 175);
+              border: none;
+              text-align: center;
+            "
+          />
+          <input
+            class="btn btn-primary"
+            type="button"
+            onclick="upFunc()"
+            value="+"
+            style="background-color: white; color: black; border: none"
+          />
+        </div>
+        <!-- Price -->
+        <div style="text-align: center">
+          <p>Rp <%= product.price %></p>
+        </div>
+        <div class="mb-3">
+          <a
+            href="/add-to-cart/<%= product._id %>"
+            class="btn btn-primary"
+            style="
+              width: 100%;
+              background-color: white;
+              color: black;
+              border: none;
+            "
+            >Add To Cart</a
+          >
+        </div>
+        <div class="mb-3">
+          <a
+            id="check"
+            class="btn btn-primary"
+            href="/checkout"
+            style="
+              width: 100%;
+              background-color: white;
+              color: black;
+              border: none;
+            "
+            >Buy Now</a
+          >
+        </div>
+        <div class="mb-3">
+          <a
+            href="/add-to-wish/<%= product._id %>"
+            class="btn btn-primary"
+            style="
+              width: 100%;
+              background-color: white;
+              color: black;
+              border: none;
+            "
+          >
+            Wishlist
+          </a>
+        </div>
+      </div>
+      <% })
+    </div>
+    <!-- Product Description -->
+    <div>
+      <div class="mb-4">
+        <h3>Description</h3>
+        <div class="descbox">
+          <div class="proddesc">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+              imperdiet, nulla et dictum interdum, nisi lorem egestas vitae
+              scel<span id="dots">...</span
+              ><span id="showmore"
+                >erisque enim ligula venenatis dolor. Maecenas nisl est,
+                ultrices nec congue eget, auctor vitae massa. Fusce luctus
+                vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed
+                ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis
+                imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida
+                venenatis. Integer fringilla congue eros non fermentum. Sed
+                dapibus pulvinar nibh tempor porta.</span
+              >
+            </p>
+            <a
+              onclick="readMore()"
+              id="myBtn"
+              style="cursor: pointer; color: white"
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Product Review -->
+      <div>
+        <div>
+          <div style="display: flex; align-items: center">
+            <h3>Review</h3>
+            <div class="jc-sb" style="margin-left: 10px">
+              <div style="margin-bottom: 0">
+                <p style="margin-bottom: 0">(5.0/5.0)</p>
+              </div>
+              <div style="display: flex; margin-left: 5px; align-items: center">
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+              </div>
+            </div>
+          </div>
+          <br />
+
+          <div class="reviewbox">
+            <div class="prodreview">
+              <div class="mb-2" style="display: flex">
+                <img
+                  src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
+                  alt="image"
+                  style="border-radius: 50%; height: 40px; width: 50px"
+                />
+                <h5
+                  style="
+                    margin-bottom: 0;
+                    align-items: center;
+                    display: flex;
+                    margin-left: 5px;
+                  "
+                >
+                  Username
+                </h5>
+                <div class="jc-sb" style="margin-left: 10px">
+                  <div
+                    style="margin-bottom: 0; align-items: center; display: flex"
+                  >
+                    <p style="margin-bottom: 0">(5.0/5.0)</p>
+                  </div>
+                  <div
+                    style="display: flex; margin-left: 5px; align-items: center"
+                  >
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
+                corrupti nisi hic cumque, perspiciatis ex magni illum cum? Cum
+                reprehenderit hic eaque. Atque repellat veniam alias sunt
+                facere, excepturi quam? Assumenda ratione expedita repellendus,
+                deleniti voluptates vel dolore, accusamus dolor reprehenderit,
+                consequuntur ducimus ullam mollitia modi tempora iusto quo
+                reiciendis quos! Cumque debitis necessitatibus beatae minus
+                eligendi doloremque at nam. Unde impedit dolores ullam ipsam
+                doloremque, commodi pariatur sint nemo assumenda quod iste
+                nostrum laudantium repellendus repudiandae nisi veniam officiis
+                officia rerum, facilis alias laboriosam veritatis possimus?
+                Praesentium, debitis quisquam.
+              </p>
+            </div>
+          </div>
+
+          <div class="reviewbox">
+            <div class="prodreview">
+              <div class="mb-2" style="display: flex">
+                <img
+                  src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
+                  alt="image"
+                  style="border-radius: 50%; height: 40px; width: 50px"
+                />
+                <h5
+                  style="
+                    margin-bottom: 0;
+                    align-items: center;
+                    display: flex;
+                    margin-left: 5px;
+                  "
+                >
+                  Username
+                </h5>
+                <div class="jc-sb" style="margin-left: 10px">
+                  <div
+                    style="margin-bottom: 0; align-items: center; display: flex"
+                  >
+                    <p style="margin-bottom: 0">(5.0/5.0)</p>
+                  </div>
+                  <div
+                    style="display: flex; margin-left: 5px; align-items: center"
+                  >
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                    <i data-feather="star"></i>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
+                corrupti nisi hic cumque, perspiciatis ex magni illum cum? Cum
+                reprehenderit hic eaque. Atque repellat veniam alias sunt
+                facere, excepturi quam? Assumenda ratione expedita repellendus,
+                deleniti voluptates vel dolore, accusamus dolor reprehenderit,
+                consequuntur ducimus ullam mollitia modi tempora iusto quo
+                reiciendis quos! Cumque debitis necessitatibus beatae minus
+                eligendi doloremque at nam. Unde impedit dolores ullam ipsam
+                doloremque, commodi pariatur sint nemo assumenda quod iste
+                nostrum laudantium repellendus repudiandae nisi veniam officiis
+                officia rerum, facilis alias laboriosam veritatis possimus?
+                Praesentium, debitis quisquam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  feather.replace();
+
+  function image(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+
+    expandImg.src = imgs.src;
+
+    expandImg.parentElement.style.display = "block";
+  }
+
+  function upFunc() {
+    document.getElementById("count").stepUp(1);
+    console.log("work up");
+  }
+  function downFunc() {
+    var down = document.getElementById("count");
+    if (down.value > 1) {
+      down.stepDown(1);
+      console.log("work down");
+    }
+  }
+
+  function readMore() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("showmore");
+    var btnText = document.getElementById("myBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less";
+      moreText.style.display = "inline";
+    }
+  }
+</script>

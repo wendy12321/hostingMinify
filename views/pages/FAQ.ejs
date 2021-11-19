@@ -1,0 +1,131 @@
+<style>
+
+     .cssfaq {
+         background-color: rgb(175, 175, 175);
+         padding: 35px; 
+     }  
+
+
+     .accordion {
+       background-color: #eee;
+       color: #444;
+       cursor: pointer;
+       padding: 18px;
+       width: 100%;
+       border: none;
+       text-align: left;
+       outline: none;
+       font-size: 15px;
+       transition: 0.4s;
+       margin-top: 15px;
+     }
+     
+     .active, .accordion:hover {
+       background-color: #ccc;
+     }
+     
+     .accordion:after {
+       content: '\002B';
+       color: #777;
+       font-weight: bold;
+       float: right;
+       margin-left: 5px;
+     }
+     
+     .active:after {
+       content: "\2212";
+     }
+     
+     .panelfaq {
+       padding: 0 18px;
+       background-color: lightskyblue;
+       max-height: 0;
+       overflow: hidden;
+       transition: max-height 0.2s ease-out;
+     }
+     
+     @media screen and (max-width: 480px) {
+               .accordion {
+                 background-color: #eee;
+                 color: #444;
+                 cursor: pointer;
+                 padding: 18px;
+                 width: 100%;
+                 border: none;
+                 text-align: left;
+                 outline: none;
+                 font-size: 15px;
+                 transition: 0.4s;
+                 margin-top: 15px;
+               } 
+               
+               .panelfaq {
+                 padding: 0 18px;
+                 background-color: lightskyblue;
+                 max-height: 0;
+                 overflow: hidden;
+                 transition: max-height 0.2s ease-out;
+               }  
+               
+             }  
+
+     </style>   
+
+
+<!-- ISI --> 
+<div style="background-color: #7A7373; padding: 5% 5%">
+
+     <div class="cssfaq">  
+
+         <h1 style="text-align:center">FAQ</h1>
+         <p>Berikut adalah pertanyaan-pertanyaan yang sering ditanyakan kepada kami:</p> 
+         
+         <button class="accordion">Berapa lama pesanan saya dikirim?</button>
+         <div class="panelfaq">
+         <p>Pesanan akan kami proses dan kirim maksimal 7 hari kerja setelah konfirmasi pembayaran ya.</p>
+         </div>
+         
+         <button class="accordion">Apakah bisa melakukan pengiriman ke seluruh indonesia?</button>
+         <div class="panelfaq">
+         <p>Tentu bisa ya! kalian dapat membeli produk kami dari seluruh indonesia.</p>
+         </div>
+         
+         <button class="accordion">Apakah ada Garansi? jika ada, berapa lama Garansi yang disediakan?</button>
+         <div class="panelfaq">
+         <p>Tentu saja ada!!! kami menyediakan Garansi 7 hari Unit Baru dan Garansi 2 tahun service di service center Seluruh Indonesia.  (untuk lokasi service center bisa dilihat di Website Resmi setiap Brand atau untuk info lebih lanjut silahkan hubungi kami ya😊)</p>
+         </div> 
+         
+         <button class="accordion">Dimana saya dapat menghubungi Minify?</button>
+         <div class="panelfaq">
+         <p>kamu punya kendala? eitss! Tenang aja. <br> kamu bisa langsung menghubungi minify melalui email, instagram, atau telepon ke 080000.</p>
+         </div>
+         
+         <button class="accordion">Apakah produk yang dijual Minify terjamin Asli?</button>
+         <div class="panelfaq">
+         <p>Pasti Asli donk!!! Minify menjamin 100% produknya asli. <br> kamu masih ragu? Tenang saja Minify juga menyediakan Garansi UANG KEMBALI 100% jika produk yang kamu terima terbukti tidak Asli.</p>
+         </div>
+         
+     </div> 
+
+ </div> 
+     
+
+     <script>
+     var acc = document.getElementsByClassName("accordion");
+     var i;
+     
+     for (i = 0; i < acc.length; i++) {
+       acc[i].addEventListener("click", function() {
+         this.classList.toggle("active");
+         var panel = this.nextElementSibling;
+         if (panel.style.maxHeight) {
+           panel.style.maxHeight = null;
+         } else {
+           panel.style.maxHeight = panel.scrollHeight + "px";
+         } 
+       });
+     }
+     </script>   
+
+
+

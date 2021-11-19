@@ -1,0 +1,130 @@
+<style>
+    #editProfile {
+        width: 80%;
+        margin: 2% auto 0;
+        padding: 2% 3%;
+        box-shadow: 0 0 10px black;
+    }
+
+    #editProfile div {
+        padding: 3% 0;
+        border-bottom: 1px solid rgb(200, 200, 200);
+    }
+
+    #editProfile .profile-pic {
+        width: 50%;
+        border-radius: 100%;
+        border: 1px solid gray;
+        background-color: white;
+    }
+</style>
+
+<section>
+    <div id="editProfile">
+        <h2>Edit Profile</h2>
+        <form action="" class="container" onsubmit="return false">
+            <div class="row">
+                <p class="col-lg-2" style="text-align: center">
+                    <img src="image/user.svg" class="profile-pic" alt="..." />
+                </p>
+                <p class="col">
+                    <span class="row">&nbsp Foto Profil</span>
+                    <br />
+                    <input type="file" name="fotoProduk" />
+                </p>
+            </div>
+
+            <div class="row">
+                <p class="col-lg-2">Username :</p>
+                <input
+                    class="col"
+                    type="text"
+                    name="usernameUser"
+                    placeholder="Budi Ahmad13995"
+                />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">email :</p>
+                <input
+                    class="col"
+                    type="number"
+                    name="emailUser"
+                    placeholder="budi_ahmad13995@gmail.com"
+                />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">No. Handphone :</p>
+                <input
+                    class="col"
+                    type="text"
+                    name="nomorHPUser"
+                    placeholder="08xx xxxx xxxx"
+                />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Jenis Kelamin :</p>
+                <select class="col" name="kategoriProduk" id="">
+                    <option value="Komputer">Pria</option>
+                    <option value="Laptop">Wanita</option>
+                    <option value="LainLain">Lainnya</option>
+                </select>
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Tanggal lahir :</p>
+                <input class="col" type="date" name="tanggalLahirUser" />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Password :</p>
+                <input
+                    class="col"
+                    type="password"
+                    name="passwordUser"
+                    value="00000000"
+                />
+            </div>
+            <div class="row">
+                <p class="col-lg-2">Alamat :</p>
+                <section class="col">
+                    <select class="row" name="" id="selectAlamat">
+                        <option class="optionAlamat">Alamat 1</option>
+                        <option class="optionAlamat">Alamat 2</option>
+                        <option class="optionAlamat">Alamat 3</option>
+                    </select>
+                    <br />
+                    <textarea
+                        class="row"
+                        name="alamatUser"
+                        id=""
+                        cols="50"
+                        rows="3"
+                        style="vertical-align: text-top"
+                        placeholder="Jl.xxx xxx"
+                    ></textarea>
+                </section>
+            </div>
+            <section class="row my-2">
+                <p class="col-lg-2"></p>
+                <input
+                    id="edit-profile-submit"
+                    class="col-lg-2"
+                    type="submit"
+                    value="Edit Profile"
+                />
+                <a
+                    href="profile.html"
+                    class="col-lg-2 my-2 my-lg-0 mx-lg-3 btn btn-danger"
+                    role="button"
+                    >Cancel</a
+                >
+            </section>
+        </form>
+    </div>
+</section>
+
+<script>
+    $("#edit-profile-submit").click(function () {
+        if (confirm("Simpan perubahan?")) {
+            window.location.href = "profile.html";
+        }
+    });
+</script>

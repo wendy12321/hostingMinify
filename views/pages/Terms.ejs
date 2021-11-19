@@ -1,0 +1,127 @@
+<style>
+
+     .cssterms {
+         background-color: rgb(175, 175, 175);
+         padding: 35px; 
+     }  
+     
+     .accordion {
+       background-color: #eee;
+       color: #444;
+       cursor: pointer;
+       padding: 18px;
+       width: 100%;
+       border: none;
+       text-align: left;
+       outline: none;
+       font-size: 15px;
+       transition: 0.4s;
+       margin-top: 15px;
+     }
+     
+     .active, .accordion:hover {
+       background-color: #ccc;
+     }
+     
+     .accordion:after {
+       content: '\002B';
+       color: #777;
+       font-weight: bold;
+       float: right;
+       margin-left: 5px;
+     }
+     
+     .active:after {
+       content: "\2212";
+     }
+     
+     .paneltrms {
+       padding: 0 18px;
+       background-color: lightskyblue;
+       max-height: 0;
+       overflow: hidden;
+       transition: max-height 0.2s ease-out;
+     }
+     
+     @media screen and (max-width: 480px) {
+               .accordion {
+                 background-color: #eee;
+                 color: #444;
+                 cursor: pointer;
+                 padding: 18px;
+                 width: 100%;
+                 border: none;
+                 text-align: left;
+                 outline: none;
+                 font-size: 15px;
+                 transition: 0.4s;
+                 margin-top: 15px;
+               } 
+               
+               .paneltrms {
+                 padding: 0 18px;
+                 background-color: lightskyblue;
+                 max-height: 0;
+                 overflow: hidden;
+                 transition: max-height 0.2s ease-out;
+               }  
+               
+             }  
+
+     </style>    
+
+     <!-- ISI --> 
+    <div style="background-color: #7A7373; padding: 5% 5%">
+
+     <div class="cssterms"> 
+
+         <h1 style="text-align:center">Terms & Conditions</h1>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestias nostrum libero dignissimos omnis, fugiat repudiandae, nobis placeat, eius officiis praesentium molestiae alias reprehenderit in. Dicta perspiciatis optio odio delectus.</p> 
+         
+         <button class="accordion">lorem</button>
+         <div class="paneltrms">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem perspiciatis provident commodi quibusdam illo impedit voluptatem beatae eius soluta eligendi eum odit cumque, laborum, a nobis at quaerat et quas.</p>
+         </div>
+         
+         <button class="accordion">lorem</button>
+         <div class="paneltrms">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed minima nemo modi et non iusto quos quo deleniti odit, esse ea in, quae voluptate dicta! Sint amet laborum unde accusantium!</p>
+         </div>
+         
+         <button class="accordion">lorem</button>
+         <div class="paneltrms">
+         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis odit mollitia nulla quod fugit autem exercitationem reiciendis eveniet nam temporibus, nihil distinctio voluptatem? Voluptatem cumque obcaecati possimus molestias magnam hic!</p>
+         </div> 
+         
+         <button class="accordion">lorem</button>
+         <div class="paneltrms">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A perferendis necessitatibus, aut voluptatum corporis non similique, expedita repudiandae libero temporibus rerum quod voluptates deleniti distinctio reiciendis asperiores nihil blanditiis molestias!</p>
+         </div>
+         
+         <button class="accordion">lorem</button>
+         <div class="paneltrms">
+         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, maiores doloribus vero tempora, est adipisci corrupti aut asperiores debitis eius inventore doloremque, facere dolor laboriosam voluptate corporis consectetur! Hic, quo!</p>
+         </div>
+     
+     </div>
+     
+ </div>
+
+     <script>
+     var acc = document.getElementsByClassName("accordion");
+     var i;
+     
+     for (i = 0; i < acc.length; i++) {
+       acc[i].addEventListener("click", function() {
+         this.classList.toggle("active");
+         var panel = this.nextElementSibling;
+         if (panel.style.maxHeight) {
+           panel.style.maxHeight = null;
+         } else {
+           panel.style.maxHeight = panel.scrollHeight + "px";
+         } 
+       });
+     }
+     </script>  
+
+
