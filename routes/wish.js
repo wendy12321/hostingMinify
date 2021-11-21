@@ -27,6 +27,7 @@ router.get("/", async (req, res) => {
   res.render("pages/Wishlist", { products: wish.generateArray() });
 });
 
+// function untuk tombol di page untuk remove product dari wishlist
 router.get("/remove-w/:id", (req, res, next) => {
   const productId = req.params.id;
   const wish = new Wish(req.session.wish ? req.session.wish : {});
@@ -36,6 +37,7 @@ router.get("/remove-w/:id", (req, res, next) => {
   res.redirect("/wishlist");
 });
 
+// function untuk tombol di page untuk menambahkan product dari wishlist ke cart dan menghapusnya dari wishlist
 router.get("/add-to-cart-from-wish/:id", (req, res, next) => {
   const productId = req.params.id;
   const cart = new Cart(req.session.cart ? req.session.cart : {});

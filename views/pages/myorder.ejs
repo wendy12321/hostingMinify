@@ -4,11 +4,13 @@
       <h1 style="color: white">My Order</h1>
     </div>
     <div style="background-color: rgb(175, 175, 175); padding: 2%">
+      <% if(orders.length>0){ %>
       <div class="row mx-5 text-sm-start text-md-center">
         <!-- Detail Produk -->
+        <% orders.forEach(function(items){ console.log(items) %>
         <div class="col-md-2 mt-2">
           <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+            src="<%= items.items[Object.keys(items.items)[0]].item.image %> "
             alt="detailImg"
             style="
               width: 100%;
@@ -19,10 +21,10 @@
           />
         </div>
         <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
+          <p class="fs-5" style="font-weight: 400; margin-bottom: 0; font-weight: 500">
+            ID: <%= items._id %>
           </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
+          <p class="fs-5" style="font-weight: 500"><%= items.pesanan %> </p>
         </div>
         <div class="col-md-3 mt-2">
           <p class="fs-5" style="font-weight: 400">Status</p>
@@ -30,169 +32,23 @@
         </div>
         <div class="col-md-2 mt-2">
           <a
-            href="myOrderDetails.html"
+            href="/myOrderDetails/<%= items._id %>"
             class="fs-5"
             style="text-decoration: none; color: black; font-weight: 500"
             >Details</a
           >
         </div>
         <hr />
-        <div class="col-md-2 mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-            alt="detailImg"
-            style="
-              width: 100%;
-              max-width: 250px;
-              min-width: 90px;
-              min-height: 80px;
-            "
-          />
-        </div>
-        <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
-          </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
-        </div>
-        <div class="col-md-3 mt-2">
-          <p class="fs-5" style="font-weight: 400">Status</p>
-          <div><p class="fs-5" style="font-weight: 500">On Process</p></div>
-        </div>
-        <div class="col-md-2 mt-2">
-          <a
-            href="myOrderDetails.html"
-            class="fs-5"
-            style="text-decoration: none; color: black; font-weight: 500"
-            >Details</a
-          >
-        </div>
-        <hr />
-        <div class="col-md-2 mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-            alt="detailImg"
-            style="
-              width: 100%;
-              max-width: 250px;
-              min-width: 90px;
-              min-height: 80px;
-            "
-          />
-        </div>
-        <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
-          </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
-        </div>
-        <div class="col-md-3 mt-2">
-          <p class="fs-5" style="font-weight: 400">Status</p>
-          <div><p class="fs-5" style="font-weight: 500">On Process</p></div>
-        </div>
-        <div class="col-md-2 mt-2">
-          <a
-            href="myOrderDetails.html"
-            class="fs-5"
-            style="text-decoration: none; color: black; font-weight: 500"
-            >Details</a
-          >
-        </div>
-        <hr />
-        <div class="col-md-2 mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-            alt="detailImg"
-            style="
-              width: 100%;
-              max-width: 250px;
-              min-width: 90px;
-              min-height: 80px;
-            "
-          />
-        </div>
-        <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
-          </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
-        </div>
-        <div class="col-md-3 mt-2">
-          <p class="fs-5" style="font-weight: 400">Status</p>
-          <div><p class="fs-5" style="font-weight: 500">On Process</p></div>
-        </div>
-        <div class="col-md-2 mt-2">
-          <a
-            href="myOrderDetails.html"
-            class="fs-5"
-            style="text-decoration: none; color: black; font-weight: 500"
-            >Details</a
-          >
-        </div>
-        <hr />
-        <div class="col-md-2 mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-            alt="detailImg"
-            style="
-              width: 100%;
-              max-width: 250px;
-              min-width: 90px;
-              min-height: 80px;
-            "
-          />
-        </div>
-        <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
-          </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
-        </div>
-        <div class="col-md-3 mt-2">
-          <p class="fs-5" style="font-weight: 400">Status</p>
-          <div><p class="fs-5" style="font-weight: 500">On Process</p></div>
-        </div>
-        <div class="col-md-2 mt-2">
-          <a
-            href="myOrderDetails.html"
-            class="fs-5"
-            style="text-decoration: none; color: black; font-weight: 500"
-            >Details</a
-          >
-        </div>
-        <hr />
-        <div class="col-md-2 mt-2">
-          <img
-            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-            alt="detailImg"
-            style="
-              width: 100%;
-              max-width: 250px;
-              min-width: 90px;
-              min-height: 80px;
-            "
-          />
-        </div>
-        <div class="col-md-5 mt-2">
-          <p class="fs-5" style="font-weight: 400; margin-bottom: 0">
-            ID: ABCDEFG
-          </p>
-          <p class="fs-5" style="font-weight: 500">Product Name...</p>
-        </div>
-        <div class="col-md-3 mt-2">
-          <p class="fs-5" style="font-weight: 400">Status</p>
-          <div><p class="fs-5" style="font-weight: 500">On Process</p></div>
-        </div>
-        <div class="col-md-2 mt-2">
-          <a
-            href="myOrderDetails.html"
-            class="fs-5"
-            style="text-decoration: none; color: black; font-weight: 500"
-            >Details</a
-          >
-        </div>
-        <hr />
+        <% }); %> 
       </div>
+    </div>
+    <% }else{ %> 
+      <div class="col-md-12">
+          <h1 class="mt-5" style="position: relative; padding-top: 220px; text-align: center; height: 550px">
+            Tidak Ada Pesanan
+          </h1>
+      </div>
+      <% } %>
     </div>
   </div>
 </section>

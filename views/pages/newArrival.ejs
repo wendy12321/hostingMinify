@@ -13,16 +13,65 @@
   .mar10 {
     margin: 10px;
   }
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-  @media screen and (max-width: 800px) {
-    .row-cols-md-4 > * {
+  .min-back {
+    background-color: rgb(175, 175, 175);
+  }
+
+  .filter {
+    width: 20%;
+    border: 1px solid black;
+    margin-right: 20px;
+    padding: 2%;
+    height: 25%;
+  }
+
+  .product {
+    background-color: rgb(175, 175, 175);
+    display: flex;
+    justify-content: center;
+    padding: 2% 0;
+  }
+
+  .prod {
+    width: 70%;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .filter *,
+  .filter-menu * {
+    background-color: rgb(175, 175, 175);
+  }
+
+  .filter-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .filter-menu {
+      display: block;
+      margin: 5%;
+    }
+    .filter {
+      display: none;
+    }
+
+    .row-cols-md-3 > * {
       -ms-flex: 0 0 50%;
       flex: 0 0 50%;
       max-width: 50%;
     }
   }
-  @media screen and (max-width: 450px) {
-    .row-cols-md-4 > * {
+
+  @media screen and (max-width: 550px) {
+    .row-cols-md-3 > * {
       -ms-flex: 0 0 100%;
       flex: 0 0 100%;
       max-width: 100%;
@@ -30,452 +79,160 @@
   }
 </style>
 
-<div>
-  <div style="padding: 40px; background-color: grey">
-    <div class="mb-4">
-      <h1 style="color: white">New Arrival</h1>
-    </div>
-    <div style="background-color: rgb(175, 175, 175); padding: 2%">
-      <div class="row row-cols-1 row-cols-md-4">
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
+<section style="background-color: grey; padding: 2%">
+  <h1 style="color: white">Category Name</h1>
+  <div class="dropdown filter-menu">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Filters
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li>
+        <div>
+          <p><b>Sort by</b></p>
+          <select class="custom-select" style="width: 70%">
+            <option selected>Rating</option>
+            <option value="1">Higher price</option>
+            <option value="2">Lower price</option>
+            <option value="3">Newest</option>
+            <option value="4">Latest</option>
+          </select>
         </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
+      </li>
+      <li>
+        <div>
+          <p><b>Price</b></p>
+          <div style="display: flex; margin-bottom: 10px">
+            <p style="background-color: grey; padding: 0 5px">Rp</p>
+            <input
+              type="text"
+              name=""
+              id=""
+              style="width: 70%"
+              placeholder="Minimum price"
+            />
+          </div>
+          <div style="display: flex">
+            <p style="background-color: grey; padding: 0 5px">Rp</p>
+            <input
+              type="text"
+              name=""
+              id=""
+              style="width: 70%"
+              placeholder="Maximum price"
+            />
+          </div>
         </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
+      </li>
+      <li>
+        <div style="margin-top: 5px">
+          <p><b>Brand</b></p>
+          <p><input type="checkbox" name="" id="" /> Asus</p>
+          <p><input type="checkbox" name="" id="" /> Acer</p>
+          <p><input type="checkbox" name="" id="" /> Lenovo</p>
+          <p><input type="checkbox" name="" id="" /> Msi</p>
+          <p><input type="checkbox" name="" id="" /> Dell</p>
+          <p><input type="checkbox" name="" id="" /> Hp</p>
         </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
+      </li>
+      <!-- <li><a class="dropdown-item" href="/cart">Something else here</a></li> -->
+    </ul>
+  </div>
+  <div class="product">
+    <div class="filter">
+      <h3>Filters</h3>
+      <div>
+        <p><b>Sort by</b></p>
+        <select class="custom-select" style="width: 70%">
+          <option selected>Rating</option>
+          <option value="1">Higher price</option>
+          <option value="2">Lower price</option>
+          <option value="3">Newest</option>
+          <option value="4">Latest</option>
+        </select>
+      </div>
+      <div>
+        <p><b>Price</b></p>
+        <div style="display: flex; margin-bottom: 10px">
+          <p style="background-color: grey; padding: 0 5px">Rp</p>
+          <input
+            type="text"
+            name=""
+            id=""
+            style="width: 70%"
+            placeholder="Minimum price"
+          />
         </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
-        </div>
-        <div class="col mb-4">
-          <a href="/details" style="text-decoration: none; color: black">
-            <div class="card h-100">
-              <img
-                src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Product Name</h5>
-                <p class="card-text">Rp xx.xxx.xx</p>
-              </div>
-              <a
-                href="/cart"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Add to cart</a
-              >
-              <a
-                href="/checkout"
-                class="btn btn-primary mar10"
-                style="background-color: grey; color: white"
-                >Buy Now</a
-              >
-            </div>
-          </a>
+        <div style="display: flex">
+          <p style="background-color: grey; padding: 0 5px">Rp</p>
+          <input
+            type="text"
+            name=""
+            id=""
+            style="width: 70%"
+            placeholder="Maximum price"
+          />
         </div>
       </div>
-      <br />
-      <div class="ta-c">
-        <a href="/product" class="btn" style="background-color: white"
-          >View All Products</a
-        >
+      <div style="margin-top: 5px">
+        <p><b>Brand</b></p>
+        <p><input type="checkbox" name="" id="" /> Asus</p>
+        <p><input type="checkbox" name="" id="" /> Acer</p>
+        <p><input type="checkbox" name="" id="" /> Lenovo</p>
+        <p><input type="checkbox" name="" id="" /> Msi</p>
+        <p><input type="checkbox" name="" id="" /> Dell</p>
+        <p><input type="checkbox" name="" id="" /> Hp</p>
+      </div>
+    </div>
+    <div class="prod">
+      <div>
+        <div class="row row-cols-1 row-cols-md-3">
+          <% products.forEach((product) => {%>
+          <div class="col mb-4">
+            <a
+              href="/details/<%= product._id %>"
+              style="text-decoration: none; color: black"
+            >
+              <div class="card h-100">
+                <img
+                  src="<%= product.image %>"
+                  height="250px"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text">Rp <%= product.price %></p>
+                </div>
+                <a
+                  href="/add-to-cart/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Add to cart</a
+                >
+                <a
+                  href="/buyNow/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Buy Now</a
+                >
+                <a
+                  href="/add-to-wish/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Wishlist</a
+                >
+              </div>
+            </a>
+          </div>
+          <% });%>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

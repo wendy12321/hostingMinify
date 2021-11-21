@@ -201,6 +201,7 @@
               <div class="card h-100">
                 <img
                   src="<%= product.image %>"
+                  height="250px"
                   class="card-img-top"
                   alt="..."
                 />
@@ -215,7 +216,7 @@
                   >Add to cart</a
                 >
                 <a
-                  href="/checkout"
+                  href="/buyNow/<%= product._id %>"
                   class="btn btn-primary mar10"
                   style="background-color: grey; color: white; border: none"
                   >Buy Now</a

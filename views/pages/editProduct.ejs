@@ -1,92 +1,119 @@
 <style>
-    #editProduct {
-        width: 80%;
-        margin: 2% auto 0;
-        padding: 2% 3%;
-        box-shadow: 0 0 10px black;
-    }
+  #editProduct {
+    width: 80%;
+    margin: 2% auto 0;
+    padding: 2% 3%;
+    box-shadow: 0 0 10px black;
+  }
 
-    #editProduct div {
-        padding: 3% 0;
-        border-bottom: 1px solid rgb(200, 200, 200);
-    }
+  #editProduct div {
+    padding: 3% 0;
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }
 </style>
 
-<section>
-    <div id="editProduct">
-        <h2>Edit Produk</h2>
-        <form action="" class="container" onsubmit="return false">
-            <div class="row">
-                <p class="col-lg-2">Nama Produk :</p>
-                <input class="col" type="text" name="namaProduk" />
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Harga :</p>
-                <input class="col" type="number" name="hargaProduk" />
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Kategori :</p>
-                <select class="col" name="kategoriProduk" id="">
-                    <option value="Komputer">Komputer</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Aksesoris">Aksesoris</option>
-                    <option value="LainLain">Lain-lain</option>
-                </select>
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Merk :</p>
-                <select class="col" name="kategoriProduk" id="">
-                    <option value="Asus">Asus</option>
-                    <option value="Acer">Acer</option>
-                    <option value="Lenovo">Lenovo</option>
-                    <option value="Msi">Msi</option>
-                    <option value="Dell">Dell</option>
-                    <option value="Hp">Hp</option>
-                </select>
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Stok :</p>
-                <input class="col" type="number" name="StokProduk" />
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Foto Produk :</p>
-                <input class="col" type="file" name="fotoProduk" />
-            </div>
-            <div class="row">
-                <p class="col-lg-2">Deskripsi :</p>
-                <textarea
-                    class="col"
-                    name="deskripsiProduk"
-                    id=""
-                    cols="50"
-                    rows="10"
-                    style="vertical-align: text-top"
-                ></textarea>
-            </div>
-            <section class="row my-2">
-                <p class="col-lg-2"></p>
-                <input
-                    id="edit-product-submit"
-                    class="col-lg-2"
-                    type="submit"
-                    value="Edit Produk"
-                />
-                <button
-                    type="button"
-                    onclick="history.back();"
-                    class="col-lg-2 my-2 my-lg-0 mx-lg-3 btn btn-danger"
-                >
-                    Cancel
-                </button>
-            </section>
-        </form>
+<section style="margin: 2% 10% ;" id="editProduct">
+  <button class="addBackBtn" onclick="history.back();">Cancel</button>
+  <h2>Edit Produk</h2>
+  <form
+    action="/product/edit/<%= product._id %>"
+    class="container"
+    method="POST"
+  
+  >
+    <div class="row">
+      <p class="col-lg-3">Nama Produk :</p>
+      <input class="col" type="text" name="name" value="<%= product.name %>" />
     </div>
+    <div class="row">
+      <p class="col-lg-3">Harga :</p>
+      <input
+        class="col"
+        type="number"
+        name="price"
+        value="<%= product.price %>"
+      />
+    </div>
+    <div class="row">
+      <p class="col-lg-3">Kategori :</p>
+      <select class="col" name="category" id="">
+        <% categories.forEach(c => { %>
+        <option value="<%= c.nama %>" <%= c.nama === product.category ? 'selected' : '' %>><%= c.nama %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="row">
+      <p class="col-lg-3">Merk :</p>
+      <select class="col" name="brand" id="">
+        <% brands.forEach(b => { %>
+        <option value="<%= b.nama %>" <%= b.nama === product.brand ? 'selected' : '' %>><%= b.nama %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="row">
+      <p class="col-lg-3">Stok :</p>
+      <input
+        class="col"
+        type="number"
+        name="stock"
+        value="<%= product.stock %>"
+      />
+    </div>
+    <div class="row">
+      <p class="col-lg-3">Foto Produk :</p>
+      <input
+        class="col"
+        type="file"
+        name="fotoProduk"
+      />
+      <input
+        class="col"
+        type="hidden"
+        name="imgPathLama"
+        value="<%= product.image %>"
+      />
+    </div>
+    <div class="row">
+      <p class="col-lg-3">Deskripsi :</p>
+      <textarea
+        class="col"
+        name="description"
+        id=""
+        cols="50"
+        rows="10"
+        style="vertical-align: text-top"
+        value="<%= product.description %>"
+      >
+  <%= product.description %>
+      </textarea>
+    </div>
+    <section class="row my-2" onclick="return confirm('Yakin Akan Diedit ?')">
+      <p class="col-lg-3"></p>
+      <input
+        id="edit-product-submit"
+        class="col-lg-3"
+        type="submit"
+        value="Edit Produk"
+      />
+    </section>
+  </form>
+  
+  <form
+    action="/product/delete/<%= product._id %>"
+    class="container"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <section class="row my-3" onclick="return confirm('Yakin Akan Dihapus ?')">
+      <p class="col-lg-3"></p>
+      <input
+        id="delete-product-submit"
+        class="col-lg-3 btn btn-danger"
+        type="submit"
+        value="Delete Produk"
+      />
+    </section>
+  </form>
+  
 </section>
 
-<script>
-    $("#edit-product-submit").click(function () {
-        if (confirm("Simpan perubahan?")) {
-            window.location.href = "Dashboard.html";
-        }
-    });
-</script>

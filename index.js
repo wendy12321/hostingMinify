@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // use layouts
 app.use(layouts);
@@ -27,6 +27,7 @@ app.use(
 );
 
 app.use(express.static("public"));
+app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
 
 mongoose.connect(
@@ -57,7 +58,8 @@ const categoryBrandRouter = require("./routes/categoryBrand");
 const cartRouter = require("./routes/cart");
 const checkoutRouter = require("./routes/checkout");
 const wishRouter = require("./routes/wish");
-const detailsRouter = require("./routes/details");
+const dashboardRouter = require("./routes/dashboard");
+const bestRouter = require("./routes/best");
 
 app.use((req, res, next) => {
   res.locals.isLoggedIn = req.session.isLoggedIn;
@@ -75,7 +77,8 @@ app.use("/product", productRouter);
 app.use("/user", userRouter);
 app.use("/", indexRouter);
 app.use("/wishlist", wishRouter);
-app.use("/details", detailsRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/bestseller", bestRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Berjalan di port ${PORT}`);

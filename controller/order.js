@@ -9,9 +9,15 @@ module.exports = {
       totalProduk: req.session.cart.totalQty,
       totalHarga: req.session.cart.totalPrice,
       hargaAkhir: req.session.checkout.totalValue,
+      ongkir: req.session.checkout.ongkir,
+      potongan: req.session.checkout.potongan,
+      pajak: req.session.checkout.pajak,
     };
     console.log(req.session);
-    await orderModel.create(order);
+    orderModel.count({}, async function (err, count) {
+      order.pesanan = "Pesanan " + (count + 1);
+      await orderModel.create(order);
+    });
     console.log("Pesanan ditambahkan");
   },
 };

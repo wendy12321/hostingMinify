@@ -2,7 +2,6 @@ const express = require("express");
 const Carts = require("../models/cart");
 const router = express.Router();
 const Checkout = require("../models/checkout");
-const Order = require("../models/order");
 
 router.get("/", function (req, res, next) {
   if (!req.session.cart) {
@@ -43,6 +42,7 @@ router.post("/addOrder", (req, res) => {
   const checkout = new Checkout(
     req.session.checkout ? req.session.checkout : {}
   );
+
   checkout.alamat = req.body.address;
   checkout.bayar = req.body.payment;
   var totalValue =

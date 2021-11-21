@@ -8,6 +8,8 @@ router.post("/register", userController.register);
 
 router.get("/logout", async (req, res) => {
   req.session.isLoggedIn = false;
+  req.session.cart = null;
+  req.session.checkout = null;
   res.redirect("/homePage");
 });
 

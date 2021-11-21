@@ -34,14 +34,14 @@
   <div>
     <div style="padding: 40px; background-color: grey">
       <div class="mb-4">
-        <h1 style="color: white">My Wishlist</h1>
+        <h1 style="color: white">Best Seller</h1>
       </div>
       <div style="background-color: rgb(175, 175, 175); padding: 2%">
         <div class="row row-cols-1 row-cols-md-4">
           <% if(products.length > 0 ){ %> 
             <% products.forEach(function(items){ %>
           <div class="col mb-4">
-            <a href="/details/<%= product._id %>" style="text-decoration: none; color: black">
+            <a href="/details/<%= items.item._id %>" style="text-decoration: none; color: black">
               <div class="card h-100">
                 <img
                   src="<%= items.item.image %>"
@@ -54,22 +54,22 @@
                   <p class="card-text">RP.<%= items.item.price %></p>
                 </div>
                 <a
-                  href="/wishlist/add-to-cart-from-wish/<%= items.item._id %>"
+                  href="/add-to-cart/<%= items.item._id %>"
                   class="btn btn-primary mar10"
                   style="background-color: grey; color: white; border: none"
                   >Add to cart</a
                 >
                 <a
-                  href="checkout.html"
+                  href="/buyNow/<%= items.item._id %>"
                   class="btn btn-primary mar10"
                   style="background-color: grey; color: white; border: none"
                   >Buy Now</a
                 >
                 <a
-                  href="/wishlist/remove-w/<%= items.item._id %>"
+                  href="/add-to-wish/<%= items.item._id %>"
                   class="btn btn-primary mar10"
                   style="background-color: grey; color: white; border: none"
-                  >Remove</a
+                  >Wishlist</a
                 >
               </div>
             </a>
@@ -79,7 +79,7 @@
             <div class="card-body" style="width: auto;">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h4 class="text-center m-auto" style="color:rgb(88, 99, 102);"><br><br><br>No items in wishlist!<br></h4>
+                    <h4 class="text-center m-auto" style="color:rgb(88, 99, 102);"><br><br><br>No Best Seller Product!<br></h4>
                 </div>
             </div>
             <br><br><br>

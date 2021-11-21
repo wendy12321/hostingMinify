@@ -129,14 +129,13 @@
 <section style="background-color: grey; padding: 5%">
   <div class="secmargin">
     <div class="mb-4 product">
-      <% products(function(items){ %>
       <!-- Image -->
       <div class="prodimage">
         <!-- Image view -->
         <section>
           <div class="mb-3">
             <img
-              src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+              src="<%= products.image %>"
               alt="image"
               class="main-image"
               id="expandedImg"
@@ -147,25 +146,25 @@
         <!-- Image Option -->
         <div>
           <img
-            src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+            src="<%= products.image %>"
             alt="image"
             class="image-option"
             onclick="image(this);"
           />
           <img
-            src="/image/alienware-Bp3KmTZQlfw-unsplash.jpg"
+            src="<%= products.image %>"
             alt="image"
             class="image-option"
             onclick="image(this);"
           />
           <img
-            src="/image/niclas-illg-gyRa86ExKTw-unsplash.jpg"
+            src="<%= products.image %>"
             alt="image"
             class="image-option"
             onclick="image(this);"
           />
           <img
-            src="/image/alienware-Bp3KmTZQlfw-unsplash.jpg"
+            src="<%= products.image %>"
             alt="image"
             class="image-option"
             onclick="image(this);"
@@ -174,7 +173,7 @@
       </div>
       <!-- Product Details -->
       <div class="prodetail">
-        <h4><b><%= items.item.name %></b></h4>
+        <h4><b><%= products.name %></b></h4>
         <div class="jc-sb mb-3">
           <p>(5.0/5.0)</p>
           <div style="display: flex; margin-left: 5px">
@@ -214,11 +213,11 @@
         </div>
         <!-- Price -->
         <div style="text-align: center">
-          <p>Rp <%= product.price %></p>
+          <p>Rp <%= products.price %></p>
         </div>
         <div class="mb-3">
           <a
-            href="/add-to-cart/<%= product._id %>"
+            href="/add-to-cart/<%= products._id %>"
             class="btn btn-primary"
             style="
               width: 100%;
@@ -233,7 +232,7 @@
           <a
             id="check"
             class="btn btn-primary"
-            href="/checkout"
+            href="/buyNow/<%= products._id %>"
             style="
               width: 100%;
               background-color: white;
@@ -245,7 +244,7 @@
         </div>
         <div class="mb-3">
           <a
-            href="/add-to-wish/<%= product._id %>"
+            href="/add-to-wish/<%= products._id %>"
             class="btn btn-primary"
             style="
               width: 100%;
@@ -258,7 +257,6 @@
           </a>
         </div>
       </div>
-      <% })
     </div>
     <!-- Product Description -->
     <div>
@@ -267,17 +265,14 @@
         <div class="descbox">
           <div class="proddesc">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              imperdiet, nulla et dictum interdum, nisi lorem egestas vitae
-              scel<span id="dots">...</span
+              <%= products.description %>
+              <span id="dots">...</span
               ><span id="showmore"
                 >erisque enim ligula venenatis dolor. Maecenas nisl est,
                 ultrices nec congue eget, auctor vitae massa. Fusce luctus
                 vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed
                 ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis
-                imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida
-                venenatis. Integer fringilla congue eros non fermentum. Sed
-                dapibus pulvinar nibh tempor porta.</span
+                imperdiet sed ornare turpis.</span
               >
             </p>
             <a
@@ -314,7 +309,7 @@
             <div class="prodreview">
               <div class="mb-2" style="display: flex">
                 <img
-                  src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
+                  src="/image/img1.jpg"
                   alt="image"
                   style="border-radius: 50%; height: 40px; width: 50px"
                 />
@@ -366,7 +361,7 @@
             <div class="prodreview">
               <div class="mb-2" style="display: flex">
                 <img
-                  src="/image/designecologist-Pmh0UoG1vlE-unsplash.jpg"
+                  src="/image/img1.jpg"
                   alt="image"
                   style="border-radius: 50%; height: 40px; width: 50px"
                 />

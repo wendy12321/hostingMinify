@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema({
+  pesanan: {
+    type: String,
+    required: true,
+  },
   address: {
     type: String,
     required: true,
@@ -18,6 +22,18 @@ const orderSchema = mongoose.Schema({
     required: true,
   },
   totalHarga: {
+    type: Number,
+    required: true,
+  },
+  ongkir: {
+    type: Number,
+    required: true,
+  },
+  potongan: {
+    type: Number,
+    required: true,
+  },
+  pajak: {
     type: Number,
     required: true,
   },
