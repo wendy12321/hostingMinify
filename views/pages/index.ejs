@@ -1,7 +1,755 @@
 <style>
-    .test {
-        background-color: antiquewhite;
+    .card {
+        /* position: inherit; */
+        overflow: hidden;
+        margin: 0 2%;
+        text-decoration: none;
+        box-shadow: 1px 1px 5px black;
+        color: black;
+        height: 300px;
+    }
+    .card-img-top {
+        height: 50%;
+        width: auto;
+        padding: 10px;
+        margin: 2% auto;
+    }
+
+    .card-body p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.5em;
+        margin-bottom: 1%;
+        text-overflow: ellipsis;
+    }
+
+    .card:hover .card-body {
+        color: white;
+        background-color: rgb(150, 150, 150);
+        transition: 0.2s;
+    }
+
+    .card-body {
+        border-top: 1px solid gray;
+        background-color: rgb(200, 200, 200);
+    }
+
+    #products .card {
+        height: 250px;
+    }
+    #products .card img {
+        height: 70%;
+    }
+    #products .card-body {
+        height: 30%;
+        text-align: center;
+    }
+
+    #slideShow2 .carousel-indicators button {
+        height: 7px;
+        background-color: rgb(88, 88, 88);
+    }
+
+    .card-review-header {
+        padding: 2%;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(245, 245, 245);
+    }
+
+    .card-review-body {
+        padding: 2%;
+        border-top: 1px solid gray;
+    }
+    #reviews .card {
+        height: fit-content;
+    }
+    /* media query */
+    @media screen and (max-width: 770px) {
+        #products .card-group {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        #products .card {
+            width: 45%;
+        }
     }
 </style>
 
-<h1 class="test">test default layout</h1>
+<section style="margin: 0 5%">
+    <!-- slide show 1 -->
+    <div>
+        <div
+            id="slideShow1"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            style="padding: 2% 0; margin: 0 -5%"
+        >
+            <div class="carousel-indicators pb-lg-5">
+                <button
+                    type="button"
+                    data-bs-target="#slideShow1"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#slideShow1"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#slideShow1"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                ></button>
+            </div>
+            <div class="carousel-inner mx-auto" style="width: 90%">
+                <div class="carousel-item active">
+                    <img
+                        src="image/slide1.jpg"
+                        class="d-block w-100"
+                        alt="..."
+                    />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="image/slide2.jpg"
+                        class="d-block w-100"
+                        alt="..."
+                    />
+                </div>
+                <div class="carousel-item">
+                    <img
+                        src="image/slide3.jpg"
+                        class="d-block w-100"
+                        alt="..."
+                    />
+                </div>
+            </div>
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#slideShow1"
+                data-bs-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#slideShow1"
+                data-bs-slide="next"
+            >
+                <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Best Seller -->
+
+    <div id="bestSeller">
+        <a href="/best" class="text-dark text-decoration-none"
+            ><h1>Best Seller</h1></a
+        >
+        <div
+            id="slideShow2"
+            class="carousel slide d-none d-lg-block"
+            data-bs-ride="carousel"
+            data-bs-interval="false"
+            style="margin: 0 -5%"
+        >
+            <div class="carousel-indicators pb-4">
+                <button
+                    type="button"
+                    data-bs-target="#slideShow2"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#slideShow2"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                ></button>
+                <button
+                    type="button"
+                    data-bs-target="#slideShow2"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                ></button>
+            </div>
+            <div
+                class="carousel-inner mx-auto"
+                style="width: 90%; padding: 2% 0"
+            >
+                <div class="carousel-item active">
+                    <div class="card-group">
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card-group">
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/monitor.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/monitor.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/monitor.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/monitor.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card-group">
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                        <a href="/details" class="card rounded-3">
+                            <img
+                                src="image/Asus.jpg"
+                                class="card-img-top"
+                                alt="..."
+                            />
+                            <div class="card-body">
+                                <p>
+                                    ASUS
+                                    XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                                </p>
+                                <h5>Rp. xxx.000</h5>
+                                <p>
+                                    <i
+                                        data-feather="star"
+                                        style="vertical-align: bottom"
+                                    ></i>
+                                    5.0 | Terjual : 10
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button
+                style="width: 7%"
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#slideShow2"
+                data-bs-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+            <button
+                style="width: 7%"
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#slideShow2"
+                data-bs-slide="next"
+            >
+                <span
+                    class="carousel-control-next-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+        </div>
+
+        <!-- Best Seller Responsive -->
+        <div
+            id="bestSellerResp"
+            class="carousel slide d-lg-none"
+            data-bs-ride="carousel"
+            data-bs-interval="false"
+            style="margin: 0 -5%"
+        >
+            <div
+                class="carousel-inner mx-auto"
+                style="width: 90%; padding: 2% 0"
+            >
+                <div class="carousel-item active">
+                    <a href="/details" class="card rounded-3">
+                        <img
+                            src="image/Asus.jpg"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <p>
+                                ASUS XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                            </p>
+                            <h5>Rp. xxx.000</h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0 | Terjual : 10
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/details" class="card rounded-3">
+                        <img
+                            src="image/Asus.jpg"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <p>
+                                ASUS XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                            </p>
+                            <h5>Rp. xxx.000</h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0 | Terjual : 10
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/details" class="card rounded-3">
+                        <img
+                            src="image/Asus.jpg"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <p>
+                                ASUS XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                            </p>
+                            <h5>Rp. xxx.000</h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0 | Terjual : 10
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/details" class="card rounded-3">
+                        <img
+                            src="image/Asus.jpg"
+                            class="card-img-top"
+                            alt="..."
+                        />
+                        <div class="card-body">
+                            <p>
+                                ASUS XfggfgsgdsgsdgsdsdgsgdgdsgsdgdsgsdggsdgdsXX
+                            </p>
+                            <h5>Rp. xxx.000</h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0 | Terjual : 10
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button
+                style="width: 7%"
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#bestSellerResp"
+                data-bs-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+            <button
+                style="width: 7%"
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#bestSellerResp"
+                data-bs-slide="next"
+            >
+                <span
+                    class="carousel-control-next-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- products -->
+    <div id="products">
+        <a href="/product" class="text-dark text-decoration-none"
+            ><h1>Products</h1></a
+        >
+
+        <div class="card-group" style="margin: 2% 0">
+            <% categories.forEach(c => { %>
+            <a href="/product" class="card rounded-3">
+                <img src="<%= c.imgPath %>" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h4 class="card-title"><%= c.nama %></h4>
+                </div>
+            </a>
+            <% }) %>
+        </div>
+    </div>
+
+    <div id="reviews">
+        <h1>Reviews</h1>
+        <div
+            id="slideShow3"
+            class="carousel slide"
+            data-bs-ride="carousel"
+            style="margin: 0 -5%"
+        >
+            <div
+                class="carousel-inner mx-auto"
+                style="width: 90%; padding: 2% 0"
+            >
+                <div class="carousel-item active">
+                    <div class="card">
+                        <div class="card-review-header">ASUS XXX-XXX-XXX</div>
+                        <div class="card-review-body">
+                            <h5 class="card-review-title">
+                                Budi Susanto - Barang bagus
+                            </h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0
+                            </p>
+                            <p class="card-review-text">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Illo veritatis accusantium
+                                quis itaque neque, exercitationem dolores error,
+                                similique quos aperiam placeat deleniti corrupti
+                                consequatur velit distinctio magni pariatur,
+                                enim excepturi!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-review-header">ACER XXX-XXX-XXX</div>
+                        <div class="card-review-body">
+                            <h5 class="card-review-title">
+                                Ahmad Budi - Barang bagus
+                            </h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0
+                            </p>
+                            <p class="card-review-text">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Illo veritatis accusantium
+                                quis itaque neque, exercitationem dolores error,
+                                similique quos aperiam placeat deleniti corrupti
+                                consequatur velit distinctio magni pariatur,
+                                enim excepturi!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-review-header">MSI XXX-XXX-XXX</div>
+                        <div class="card-review-body">
+                            <h5 class="card-review-title">
+                                Joko Budi - Barang bagus
+                            </h5>
+                            <p>
+                                <i
+                                    data-feather="star"
+                                    style="vertical-align: bottom"
+                                ></i>
+                                5.0
+                            </p>
+                            <p class="card-review-text">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Illo veritatis accusantium
+                                quis itaque neque, exercitationem dolores error,
+                                similique quos aperiam placeat deleniti corrupti
+                                consequatur velit distinctio magni pariatur,
+                                enim excepturi!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button
+                style="width: 7%"
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#slideShow3"
+                data-bs-slide="prev"
+            >
+                <span
+                    class="carousel-control-prev-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+            <button
+                style="width: 7%"
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#slideShow3"
+                data-bs-slide="next"
+            >
+                <span
+                    class="carousel-control-next-icon"
+                    style="background-color: gray; padding: 100% 20px"
+                ></span>
+            </button>
+        </div>
+    </div>
+
+    <div style="height: 100px"></div>
+</section>

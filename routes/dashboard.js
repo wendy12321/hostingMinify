@@ -45,11 +45,19 @@ router.post("/filterProduct", async (req, res) => {
 
     req.body.brand = result;
   }
-
-  const products = await Products.find({
-    brand: req.body.brand,
-    category: req.body.category,
-  });
+  var products;
+  if (req.body.stock != undefined) {
+    products = await Products.find({
+      brand: req.body.brand,
+      category: req.body.category,
+      stock: 0,
+    });
+  } else {
+    products = await Products.find({
+      brand: req.body.brand,
+      category: req.body.category,
+    });
+  }
 
   Catalog = true;
 

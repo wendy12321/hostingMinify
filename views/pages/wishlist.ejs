@@ -39,9 +39,9 @@
       <div style="background-color: rgb(175, 175, 175); padding: 2%">
         <div class="row row-cols-1 row-cols-md-4">
           <% if(products.length > 0 ){ %> 
-            <% products.forEach(function(items){ %>
+            <% products.forEach(function(items){ console.log(items)%>
           <div class="col mb-4">
-            <a href="/details/<%= product._id %>" style="text-decoration: none; color: black">
+            <a href="/details/<%= items.item._id %>" style="text-decoration: none; color: black">
               <div class="card h-100">
                 <img
                   src="<%= items.item.image %>"
@@ -60,7 +60,7 @@
                   >Add to cart</a
                 >
                 <a
-                  href="checkout.html"
+                  href="/checkout"
                   class="btn btn-primary mar10"
                   style="background-color: grey; color: white; border: none"
                   >Buy Now</a

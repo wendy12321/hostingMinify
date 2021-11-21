@@ -80,38 +80,114 @@
 </style>
 
 <section style="background-color: grey; padding: 2%">
-  <h1 style="color: white">Category Name</h1>
-  <div class="dropdown filter-menu">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="dropdownMenuButton1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Filters
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li>
+  <h1 style="color: white">Products</h1>
+  <form action="/productFilter" method="POST">
+    <div class="dropdown filter-menu">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filters
+      </button>
+      
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <div>
+            <!-- tombol apply filter -->
+            <input
+            id="filter-product-submit"
+            class="btn btn-dark"
+            type="submit"
+            value="Apply Filter"
+          />
+          </div>
+          <div>
+            <p><b>Sort by</b></p>
+            <select class="custom-select" style="width: 70%">
+              <option selected>Rating</option>
+              <option value="1">Higher price</option>
+              <option value="2">Lower price</option>
+              <!-- <option value="3">Newest</option>
+              <option value="4">Latest</option> -->
+            </select>
+          </div>
+        </li>
+        <li>
+          <div>
+            <p><b>Price</b></p>
+            <div style="display: flex; margin-bottom: 10px">
+              <p style="background-color: grey; padding: 0 5px">Rp</p>
+              <input
+                type="number"
+                name="minPrice"
+                id=""
+                style="width: 70%"
+                placeholder="Minimum price"
+              />
+            </div>
+            <div style="display: flex">
+              <p style="background-color: grey; padding: 0 5px">Rp</p>
+              <input
+                type="number"
+                name="maxPrice"
+                id=""
+                style="width: 70%"
+                placeholder="Maximum price"
+              />
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="margin-top: 5px">
+            <p><b>Kategori</b></p>
+              <% categories.forEach(c => { %>
+              <p><input type="checkbox" name="category" value="<%= c.nama %>"/> <%= c.nama %></p>
+              <% }) %>
+              <p><b>Brand</b></p>
+              <% brands.forEach(b => { %>
+              <p><input type="checkbox" name="brand" value="<%= b.nama %>"/> <%= b.nama %></p>
+              <% }) %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </form>
+ 
+  
+  <!-- bukan responsive -->
+  <div class="product">
+    <div class="filter">
+      <h3>Filters</h3>
+      <form action="/productFilter" method="POST">
+        <div>
+          <!-- tombol apply filter -->
+          <input
+          id="filter-product-submit"
+          class="btn btn-dark"
+          type="submit"
+          value="Apply Filter"
+        />
+        </div>
         <div>
           <p><b>Sort by</b></p>
-          <select class="custom-select" style="width: 70%">
-            <option selected>Rating</option>
-            <option value="1">Higher price</option>
-            <option value="2">Lower price</option>
-            <option value="3">Newest</option>
-            <option value="4">Latest</option>
+          <select name="sortBy" class="custom-select" style="width: 70%">
+            <option selected value="Rate">Rating</option>
+            <option value="hiPrice">Higher price</option>
+            <option value="loPrice">Lower price</option>
+            <!-- <option value="new">Newest</option>
+            <option value="old">Oldest</option> -->
           </select>
         </div>
-      </li>
-      <li>
         <div>
           <p><b>Price</b></p>
           <div style="display: flex; margin-bottom: 10px">
             <p style="background-color: grey; padding: 0 5px">Rp</p>
             <input
-              type="text"
-              name=""
+              type="number"
+              name="minPrice"
               id=""
               style="width: 70%"
               placeholder="Minimum price"
@@ -120,74 +196,26 @@
           <div style="display: flex">
             <p style="background-color: grey; padding: 0 5px">Rp</p>
             <input
-              type="text"
-              name=""
+              type="number"
+              name="maxPrice"
               id=""
               style="width: 70%"
               placeholder="Maximum price"
             />
           </div>
-        </div>
-      </li>
-      <li>
-        <div style="margin-top: 5px">
-          <p><b>Brand</b></p>
-          <p><input type="checkbox" name="" id="" /> Asus</p>
-          <p><input type="checkbox" name="" id="" /> Acer</p>
-          <p><input type="checkbox" name="" id="" /> Lenovo</p>
-          <p><input type="checkbox" name="" id="" /> Msi</p>
-          <p><input type="checkbox" name="" id="" /> Dell</p>
-          <p><input type="checkbox" name="" id="" /> Hp</p>
-        </div>
-      </li>
-      <!-- <li><a class="dropdown-item" href="/cart">Something else here</a></li> -->
-    </ul>
-  </div>
-  <div class="product">
-    <div class="filter">
-      <h3>Filters</h3>
-      <div>
-        <p><b>Sort by</b></p>
-        <select class="custom-select" style="width: 70%">
-          <option selected>Rating</option>
-          <option value="1">Higher price</option>
-          <option value="2">Lower price</option>
-          <option value="3">Newest</option>
-          <option value="4">Latest</option>
-        </select>
-      </div>
-      <div>
-        <p><b>Price</b></p>
-        <div style="display: flex; margin-bottom: 10px">
-          <p style="background-color: grey; padding: 0 5px">Rp</p>
-          <input
-            type="text"
-            name=""
-            id=""
-            style="width: 70%"
-            placeholder="Minimum price"
-          />
-        </div>
-        <div style="display: flex">
-          <p style="background-color: grey; padding: 0 5px">Rp</p>
-          <input
-            type="text"
-            name=""
-            id=""
-            style="width: 70%"
-            placeholder="Maximum price"
-          />
-        </div>
-      </div>
-      <div style="margin-top: 5px">
-        <p><b>Brand</b></p>
-        <p><input type="checkbox" name="" id="" /> Asus</p>
-        <p><input type="checkbox" name="" id="" /> Acer</p>
-        <p><input type="checkbox" name="" id="" /> Lenovo</p>
-        <p><input type="checkbox" name="" id="" /> Msi</p>
-        <p><input type="checkbox" name="" id="" /> Dell</p>
-        <p><input type="checkbox" name="" id="" /> Hp</p>
-      </div>
+          <div style="margin-top: 5px">
+            <p><b>Kategori</b></p>
+            <% categories.forEach(c => { %>
+            <p><input type="checkbox" name="category" value="<%= c.nama %>"/> <%= c.nama %></p>
+            <% }) %>
+            <p><b>Brand</b></p>
+            <% brands.forEach(b => { %>
+            <p><input type="checkbox" name="brand" value="<%= b.nama %>"/> <%= b.nama %></p>
+            <% }) %>
+          </div>
+      </form>
+    </div>
+      
     </div>
     <div class="prod">
       <div>
@@ -201,7 +229,7 @@
               <div class="card h-100">
                 <img
                   src="<%= product.image %>"
-                  height="250px"
+                  height="150px"
                   class="card-img-top"
                   alt="..."
                 />

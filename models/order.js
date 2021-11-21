@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//skema pesanan
 const orderSchema = mongoose.Schema({
   pesanan: {
     type: String,

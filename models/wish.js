@@ -16,7 +16,7 @@ module.exports = function Wish(oldWish) {
     delete this.items[id];
   };
 
-  //function untuk generate array wishlist
+  //function yang digunakan di routes untuk generate array wishlist
   this.generateArray = function () {
     var arr = [];
     for (var id in this.items) {

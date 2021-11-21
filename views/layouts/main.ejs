@@ -38,7 +38,7 @@
         "
       >
         <div class="container-fluid">
-          <a class="navbar-brand fs-1" href="/homePage"> Minify </a>
+          <a class="navbar-brand fs-1" href="/"> Minify </a>
           <!-- search -->
           <form class="d-none d-lg-flex navbar-nav" style="width: 50%">
             <input
@@ -54,7 +54,8 @@
 
           <!-- account section-->
           <div class="d-none d-lg-flex navbar-nav nav-item">
-            <% if (locals.isLoggedIn){ %> <% if (locals.user == "admin"){ %>
+            <% if (locals.isLoggedIn){ %> <% if (locals.user.type == "admin"){
+            %>
             <!-- login sebagai penjual -->
             <div class="navbar-nav nav-item dropdown" id="ownerBtn">
               <button
@@ -78,7 +79,7 @@
                 >
               </div>
             </div>
-            <% } else if (locals.user == "customer") { %>
+            <% } else if (locals.user.type == "customer") { %>
             <!-- login sebagai pembeli -->
             <a
               class="btn btn-outline-dark"
@@ -255,12 +256,20 @@
                   Product
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="productDropdown">
-                  <li>
-                    <a class="dropdown-item" href="/product">Komputer</a>
-                  </li>
-                  <a class="dropdown-item" href="/product">Laptop</a>
-                  <a class="dropdown-item" href="/product">Aksesoris</a>
-                  <a class="dropdown-item" href="/product">Lain-lain</a>
+                  <form action="/productFilter" method="POST">
+                    <% locals.categories.forEach(c => { %>
+
+                    <button
+                      class="dropdown-item link"
+                      type="submit"
+                      name="category"
+                      value="<%= c.nama %>"
+                    >
+                      <%= c.nama %>
+                    </button>
+
+                    <% }) %>
+                  </form>
                   <hr class="dropdown-divider" />
                   <a class="dropdown-item" href="/product">Semua Produk</a>
                 </ul>

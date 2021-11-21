@@ -6,7 +6,7 @@ module.exports = function Checkout(checkout) {
   this.kirim = checkout.kirim || null;
   this.pajak = 5000;
   this.potongan = 3000;
-
+  //fungsi untuk menentukan ongkir dan pilihan kurir berdasarkan value dari dropdown pengiriman
   this.kurir = function (id) {
     this.kirim = id;
     if (id == "tiki") {

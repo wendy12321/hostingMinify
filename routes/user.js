@@ -8,9 +8,10 @@ router.post("/register", userController.register);
 
 router.get("/logout", async (req, res) => {
   req.session.isLoggedIn = false;
+  //bersihkan session cart dan checkout ketika logout
   req.session.cart = null;
   req.session.checkout = null;
-  res.redirect("/homePage");
+  res.redirect("/");
 });
 
 module.exports = router;

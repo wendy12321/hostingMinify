@@ -4,11 +4,14 @@
       <h1 style="color: white">My Order</h1>
     </div>
     <div style="background-color: rgb(175, 175, 175); padding: 2%">
+      <!--jika ada orderan di database-->
       <% if(orders.length>0){ %>
       <div class="row mx-5 text-sm-start text-md-center">
         <!-- Detail Produk -->
+        <!-- looping semua orderan di database-->
         <% orders.forEach(function(items){ console.log(items) %>
         <div class="col-md-2 mt-2">
+          <!-- tampilkan gambar produk pertama dari pesanan -->
           <img
             src="<%= items.items[Object.keys(items.items)[0]].item.image %> "
             alt="detailImg"
@@ -42,6 +45,7 @@
         <% }); %> 
       </div>
     </div>
+    <!--jika tidak ada pesanan-->
     <% }else{ %> 
       <div class="col-md-12">
           <h1 class="mt-5" style="position: relative; padding-top: 220px; text-align: center; height: 550px">

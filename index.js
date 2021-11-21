@@ -4,7 +4,9 @@ const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-
+const passport = require("passport");
+const jwt = require("passport-jwt");
+const Categories = require("./models/category");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -25,6 +27,9 @@ app.use(
     cookie: {},
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static("public"));
 app.use("/public", express.static("public"));
@@ -60,6 +65,7 @@ const checkoutRouter = require("./routes/checkout");
 const wishRouter = require("./routes/wish");
 const dashboardRouter = require("./routes/dashboard");
 const bestRouter = require("./routes/best");
+const editProfileRouter = require("./routes/editProfile");
 
 app.use((req, res, next) => {
   res.locals.isLoggedIn = req.session.isLoggedIn;
@@ -67,6 +73,10 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
+  next();
+});
+app.use(async (req, res, next) => {
+  res.locals.categories = await Categories.find({}, { nama: 1, _id: 0 });
   next();
 });
 
@@ -79,6 +89,7 @@ app.use("/", indexRouter);
 app.use("/wishlist", wishRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/bestseller", bestRouter);
+app.use("/editProfile", editProfileRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Berjalan di port ${PORT}`);

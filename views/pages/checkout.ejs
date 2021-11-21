@@ -6,9 +6,11 @@
     <div style="background-color: rgb(175, 175, 175); padding: 2%">
       <i data-feather="shopping-cart" class="mx-5" style="float: right"></i
       ><br /><br />
+      <!-- jika session cart berisi product  -->
       <% if(products.length > 0) { %>
       <div class="row mx-5">
         <!-- Detail Produk -->
+        <!-- looping setiap product di cart  -->
         <% products.forEach(function (items) { %>
         <div class="row">
           <div class="col-md-2 mt-2">
@@ -96,6 +98,7 @@
               >Pengiriman:</label
             >
             <div class="col-sm col-md-6">
+              <!-- panggil fungsi kirim() setiap memilih kurir  -->
               <select
                 name="pengiriman"
                 class="form-select"
@@ -163,6 +166,7 @@
           </button>
         </div>
       </div>
+      <!-- jika tidak ada product dalam session cart  -->
       <% } else { %>
       <div class="col-md-12">
         <div
@@ -181,14 +185,17 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+  //fungsi untuk mengubah nilai ongkir, total harga, dan pengiriman melalui dropdown
   kirim = () => {
     $.get(
+      //arahkan ke page /kurir/(id dari pilihan kurir)
       window.location.href +
         "/kurir/" +
         document.getElementsByClassName("pilihan")[
           document.getElementById("kurir").selectedIndex
         ].value,
       (a) => {
+        //tampilkan text melalui id masing-masing
         $("#pengirimans").text(a.checkout.pilih);
         $("#ongkirs").text(a.checkout.ongkir);
         $("#totalValue").text(a.totalValue);
@@ -197,6 +204,7 @@
   };
 </script>
 <script>
+  //pesan konfirmasi saat submit form
   $("#add-order").click(function () {
     if (confirm("Tambahkan pesanan?")) {
       $("#testform").submit();
