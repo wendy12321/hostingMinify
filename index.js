@@ -8,7 +8,9 @@ const passport = require("passport");
 const jwt = require("passport-jwt");
 const Categories = require("./models/category");
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+const http = require('http');
+const PORT = process.env.PORT || 3000
 
 // use layouts
 app.use(layouts);
