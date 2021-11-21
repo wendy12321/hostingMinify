@@ -10,14 +10,14 @@ var Catalog = false;
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("pages/index", { title: "Document" });
-});
-
-// router.get("/", async (req, res) => {
-//   const categories = await Categories.find();
-//   res.render("pages/index", { categories, title: "Home Page || Minify" });
+// router.get("/", (req, res) => {
+//   res.render("pages/index", { title: "Document" });
 // });
+
+router.get("/", async (req, res) => {
+  const categories = await Categories.find();
+  res.render("pages/index", { categories, title: "Home Page || Minify" });
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login", { title: "Login || Minify" });
