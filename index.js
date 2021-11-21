@@ -11,7 +11,7 @@ const app = express();
 
 
 const http = require('http');
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 // use layouts
 app.use(layouts);
