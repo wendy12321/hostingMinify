@@ -1,0 +1,30 @@
+<h3>Order</h3>
+<div class="card-group-order" style="max-height: 370px; overflow: auto">
+  <!-- orederan dummy -->
+  <% orders.forEach(o => { %>
+  <a href="/myOrderDetails/<%= o._id %>" class="card">
+    <img
+      src="<%= o.items[Object.keys(o.items)[0]].item.image %> "
+      class="card-img-left"
+      alt="..."
+    />
+    <div class="card-desc">
+      <p>ID : <%= o._id %></p>
+      <h4><%= o.pesanan %></h4>
+      <% Object.keys(o.items).forEach(i => { %>
+      <p>
+        <%= o.items[i].qty %> <%= o.items[i].item.name %><span
+          >Rp. <%= o.items[i].item.price %></span
+        >
+      </p>
+      <% }) %>
+
+      <p class="total">Total :<span>Rp. <%= o.totalHarga %></span></p>
+    </div>
+    <div class="card-status text-center w-25 mx-auto">
+      <h4>Status</h4>
+      <p>On Process</p>
+    </div>
+  </a>
+  <% }) %>
+</div>

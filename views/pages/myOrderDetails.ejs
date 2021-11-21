@@ -1,0 +1,120 @@
+<section>
+  <div style="padding: 20px 40px; background-color: grey">
+    <div class="mb-4">
+      <h1 style="color: white">Order Details</h1>
+    </div>
+    <button class="my-2" onclick="history.back();">Back</button>
+    <div style="background-color: white; padding: 2%">
+      <!-- jika ada pesanan di database -->
+      <% if(orders){ %>
+      <div class="row mx-5 text-sm-start text-md-center">
+        <h5
+          class="text-start fs-5"
+          style="font-weight: bold; margin-bottom: 40px"
+        >
+          ID ORDER: <%= orders._id %>
+        </h5>
+        <div class="col-6 text-start fs-5">
+          <p style="font-weight: 500">Total Pembayaran</p>
+          <p class="fs-5" style="font-weight: bold">
+            RP. <%= orders.hargaAkhir %>
+          </p>
+        </div>
+        <div class="col-6 text-end fs-5">
+          <p style="font-weight: 500">Waktu Pembayaran</p>
+          <p class="fs-5" style="font-weight: bold">22/11/21</p>
+        </div>
+        <hr />
+        <!--Rincian Pesanan-->
+        <h5
+          class="text-start fs-5"
+          style="font-weight: bold; margin-bottom: 20px"
+        >
+          Rincian Pesanan
+        </h5>
+        <% Object.keys(orders.items).forEach(function(items){ %>
+        <div class="col-6 text-start fs-5">
+          <p class="fs-5"><%= orders.items[items].item.name %></p>
+        </div>
+        <div class="col-6 text-end fs-5">
+          <p class="fs-5" style="word-spacing: 5px">
+            x <%= orders.items[items].qty %>
+          </p>
+          <p class="fs-5">RP. <%= orders.items[items].price %></p>
+        </div>
+        <% }); %>
+        <hr />
+        <!--Rincian Pengiriman-->
+        <div class="col-6 text-start fs-5">
+          <p style="font-weight: bold">Rincian Pengiriman</p>
+          <p class="fs-5">
+            Budi Ahmad <br />
+            <%= orders.address %>
+          </p>
+        </div>
+        <div class="col-6 text-end fs-5">
+          <p style="font-weight: 500">Metode Pembayaran</p>
+          <p class="fs-5"><%= orders.payment %></p>
+        </div>
+        <hr />
+        <!--Informasi Pembayaran-->
+        <h5
+          class="text-start fs-5"
+          style="font-weight: bold; margin-bottom: 20px"
+        >
+          Informasi Pembayaran
+        </h5>
+        <div class="col-6 text-start fs-5" style="line-height: 1">
+          <p class="fs-5" style="font-weight: 500">Subtotal untuk Produk</p>
+        </div>
+        <div class="col-6 text-end fs-5" style="line-height: 1">
+          <p class="fs-5" style="font-weight: 500">
+            RP. <%= orders.totalHarga %>
+          </p>
+        </div>
+        <div class="col-6 text-start fs-5" style="line-height: 1">
+          <p class="fs-5">Subtotal Pengiriman</p>
+        </div>
+        <div class="col-6 text-end fs-5" style="line-height: 1">
+          <p class="fs-5">RP. <%= orders.ongkir %></p>
+        </div>
+        <div class="col-6 text-start fs-5" style="line-height: 1">
+          <p class="fs-5">Pajak</p>
+        </div>
+        <div class="col-6 text-end fs-5" style="line-height: 1">
+          <p class="fs-5">RP. <%= orders.pajak %></p>
+        </div>
+        <div class="col-6 text-start fs-5" style="line-height: 1">
+          <p class="fs-5">Total Diskon</p>
+        </div>
+        <div class="col-6 text-end fs-5" style="line-height: 1">
+          <p class="fs-5">-RP. <%= orders.potongan %></p>
+        </div>
+        <div class="col-6 text-start fs-5" style="line-height: 1">
+          <p class="fs-4" style="font-weight: 500">Total Pembayaran</p>
+        </div>
+        <div class="col-6 text-end fs-5" style="line-height: 1">
+          <p class="fs-4" style="font-weight: 500">
+            RP. <%= orders.hargaAkhir %>
+          </p>
+        </div>
+      </div>
+      <!--jika tidak ada pesanan-->
+      <% }else{ %>
+      <div class="col-md-12">
+        <h1
+          class="mt-5"
+          style="
+            position: relative;
+            padding-top: 220px;
+            text-align: center;
+            height: 550px;
+          "
+        >
+          Tidak Ada Pesanan
+        </h1>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>

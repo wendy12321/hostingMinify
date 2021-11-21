@@ -1,0 +1,161 @@
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .chat-avatar {
+    width: 5%;
+    margin: 2%;
+    border-radius: 100%;
+    border: 1px solid gray;
+    background-color: white;
+  }
+
+  #chatPanel {
+    padding-top: 2%;
+    height: 500px;
+    background-color: white;
+    overflow: auto;
+  }
+
+  .chat-bubble-left {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 0 0 2%;
+  }
+  .chat-bubble-left div {
+    border-radius: 10px;
+    background-color: rgb(230, 230, 230);
+    max-width: 60%;
+    padding: 1%;
+    margin: 0 2%;
+  }
+  .chat-bubble-right {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0 0 2%;
+  }
+  .chat-bubble-right div {
+    border-radius: 10px;
+    background-color: whitesmoke;
+    max-width: 60%;
+    padding: 1%;
+    margin: 0 2%;
+  }
+
+  #chatBar {
+    display: flex;
+    padding: 1%;
+    background-color: rgb(150, 150, 150);
+  }
+  #backToBottom {
+    position: absolute;
+    right: 15%;
+    bottom: -20%;
+  }
+
+  .chat-date {
+    text-align: center;
+  }
+
+  /* media query */
+  @media screen and (max-width: 770px) {
+    .chat-avatar {
+      width: 12%;
+      margin: 3%;
+    }
+
+    .chat-bubble-right div {
+      padding: 3%;
+    }
+    .chat-bubble-left div {
+      padding: 3%;
+    }
+  }
+</style>
+
+<section>
+  <div style="height: fit-content; width: 80%; margin: 1% auto 0">
+    <button type="button" onclick="history.back();" class="my-3">Back</button>
+
+    <div
+      style="
+        height: fit-content;
+        background-color: rgb(230, 230, 230);
+        display: flex;
+        align-items: center;
+      "
+    >
+      <img src="image/user.svg" class="chat-avatar" alt="..." />
+      <h2>Budi Ahmad</h2>
+    </div>
+    <div id="chatPanel">
+      <div class="chat-date">
+        <p>-20 sep-</p>
+      </div>
+      <div class="chat-bubble-right">
+        <p>10 : 30 AM</p>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+            sapiente similique nulla eligendi qui aliquam et! Non maiores vel
+            quia alias! Necessitatibus, blanditiis. Excepturi ea aliquam
+            consectetur nobis, quam animi.
+          </p>
+        </div>
+      </div>
+      <div class="chat-bubble-left">
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+            sapiente similique nulla eligendi qui aliquam et! Non maiores vel
+            quia alias! Necessitatibus, blanditiis. Excepturi ea aliquam
+            consectetur nobis, quam animi.
+          </p>
+        </div>
+        <p>10 : 30 AM</p>
+      </div>
+    </div>
+
+    <form id="chatBar">
+      <button class="btn btn-light mx-1" type="submit">
+        <i data-feather="plus-circle"></i>
+      </button>
+      <input
+        class="form-control"
+        type="Message"
+        placeholder="Message"
+        aria-label="Message"
+      />
+      <button id="send" class="btn btn-light mx-3" type="submit">
+        <i data-feather="send"></i>
+      </button>
+    </form>
+    <button id="backToBottom" class="btn btn-dark">
+      <i data-feather="arrow-down"></i>
+    </button>
+  </div>
+</section>
+
+<script>
+  var chatPanel = document.getElementById("chatPanel");
+  var backToBottom = document.getElementById("backToBottom");
+
+  function scrollToBottom() {
+    chatPanel.scrollTop = chatPanel.scrollHeight;
+    backToBottom.style.display = "none";
+  }
+
+  scrollToBottom();
+
+  backToBottom.onclick = scrollToBottom;
+
+  chatPanel.addEventListener("scroll", function () {
+    const minScroll = chatPanel.scrollHeight - chatPanel.clientHeight - 50;
+    if (chatPanel.scrollTop < minScroll) {
+      backToBottom.style.display = "initial";
+    } else [(backToBottom.style.display = "none")];
+  });
+</script>

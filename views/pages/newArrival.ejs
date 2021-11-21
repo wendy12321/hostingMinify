@@ -1,0 +1,138 @@
+<style>
+  .jc-sb {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ta-c {
+    text-align: center;
+  }
+  .td a {
+    text-decoration: none;
+    color: black;
+  }
+  .mar10 {
+    margin: 10px;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .min-back {
+    background-color: rgb(175, 175, 175);
+  }
+
+  .filter {
+    width: 20%;
+    border: 1px solid black;
+    margin-right: 20px;
+    padding: 2%;
+    height: 25%;
+  }
+
+  .product {
+    background-color: rgb(175, 175, 175);
+    display: flex;
+    justify-content: center;
+    padding: 2% 0;
+  }
+
+  .prod {
+    width: 70%;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .filter *,
+  .filter-menu * {
+    background-color: rgb(175, 175, 175);
+  }
+
+  .filter-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    .filter-menu {
+      display: block;
+      margin: 5%;
+    }
+    .filter {
+      display: none;
+    }
+
+    .row-cols-md-3 > * {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .row-cols-md-3 > * {
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section style="background-color: grey; padding: 2%">
+  <h1 style="color: white">New Arrival</h1>
+  <div class="product">
+    <div class="prod">
+      <div>
+        <!-- Loop semua product yang ada di database -->
+        <div class="row row-cols-1 row-cols-md-3">
+          <% products.forEach((product) => {%>
+          <div class="col mb-4">
+            <!-- Untuk ke page details dari product   -->
+            <a
+              href="/details/<%= product._id %>"
+              style="text-decoration: none; color: black"
+            >
+              <div class="card h-100">
+                <!-- Product Image -->
+                <img
+                  src="<%= product.image %>"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <!-- Product Name -->
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <!-- Product Price -->
+                  <p class="card-text">Rp <%= product.price %></p>
+                </div>
+                <!-- Tombol untuk memasukan produk ke cart -->
+                <a
+                  href="/add-to-cart/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Add to cart</a
+                >
+                <!-- Tombol untuk checkout produk -->
+                <a
+                  href="/buyNow/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Buy Now</a
+                >
+                <!-- Tombol untuk memasukan produk ke wishlist -->
+                <a
+                  href="/add-to-wish/<%= product._id %>"
+                  class="btn btn-primary mar10"
+                  style="background-color: grey; color: white; border: none"
+                  >Wishlist</a
+                >
+              </div>
+            </a>
+          </div>
+          <% });%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
