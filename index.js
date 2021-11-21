@@ -93,6 +93,8 @@ app.use("/dashboard", dashboardRouter);
 app.use("/bestseller", bestRouter);
 app.use("/editProfile", editProfileRouter);
 
-app.listen(PORT, () => {
+
+
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server Berjalan di port ${PORT}`);
 });
