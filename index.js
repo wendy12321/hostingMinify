@@ -9,10 +9,10 @@ const jwt = require("passport-jwt");
 const Categories = require("./models/category");
 const app = express();
 
-// const http = require('http');
-// const PORT = process.env.PORT || 3000; 
+const http = require('http');
+const PORT = process.env.PORT || 3000; 
 
-app.set( 'port', ( process.env.PORT || 3000 ));
+// app.set( 'port', ( process.env.PORT || 3000 ));
 
 
 
@@ -99,12 +99,12 @@ app.use("/editProfile", editProfileRouter);
 
 
 
-// app.listen(process.env.PORT || 3000, () => {
-//   console.log(`Server Berjalan di port ${PORT}`);
-// });
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server Berjalan di port ${PORT}`);
+});
 
-// Start node server
-app.listen( app.get( 'port' ), function() {
-  console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
+// // Start node server
+// app.listen( app.get( 'port' ), function() {
+//   console.log( 'Node server is running on port ' + app.get( 'port' ));
+//   });
 
