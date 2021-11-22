@@ -5,8 +5,12 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const Categories = require("./models/category");
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+
+// const http = require('http'); 
+const PORT = process.env.PORT || 3000; 
 
 // menggunakan layout
 app.use(layouts);
@@ -28,6 +32,48 @@ app.use(express.static("public"));
 app.use("/public", express.static("public"));
 app.set("view engine", "ejs");
 
+//menyambungkan aplikasi dengan database mongodb
+// mongoose.connect(
+//   "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+//   (err, res) => {
+//     if (err) {
+//       console.error(err);
+//       console.log("not connect");
+//     } else {
+//       console.log("Database terhubung");
+//     }
+//   }
+// ); 
+
+//menyambungkan aplikasi dengan database mongodb 
+// const database =
+// process.env.MONGO_URI ||
+// "mongodb://localhost:27017/tryhMinify?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+
+// //menyambungkan aplikasi dengan database mongodb 
+// const database =
+// process.env.MONGO_URI ||
+// "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+// mongoose.connect(
+// database,
+// {
+//   useUnifiedTopology: true,
+//   useNewUrlParser: true,
+// }
+// (err, res) => {
+//   if (err) {
+//     console.error(err);
+//     console.log("not connect");
+//   } else {
+//     console.log("Database terhubung");
+//   }
+// }
+// );
+// mongoose.connection.on("connected", () => {
+//   console.log(`${database} terkoneksi... `);
+// });
+// const db = mongoose.connection; 
 //menyambungkan aplikasi dengan database mongodb
 mongoose.connect(
   "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
@@ -82,6 +128,10 @@ app.use("/dashboard", dashboardRouter);
 app.use("/bestseller", bestRouter);
 app.use("/editProfile", editProfileRouter);
 
+
+
+
 app.listen(PORT, () => {
   console.log(`Server Berjalan di port ${PORT}`);
-});
+}); 
+
