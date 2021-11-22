@@ -9,7 +9,7 @@ const Categories = require("./models/category");
 const app = express();
 
 
-// const http = require('http'); 
+const http = require('http'); 
 const PORT = process.env.PORT || 3000; 
 
 // menggunakan layout
@@ -50,17 +50,16 @@ app.set("view engine", "ejs");
 // process.env.MONGO_URI ||
 // "mongodb://localhost:27017/tryhMinify?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
 
-// //menyambungkan aplikasi dengan database mongodb 
-// const database =
-// process.env.MONGO_URI ||
-// "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+//menyambungkan aplikasi dengan database mongodb 
+const database =
+process.env.MONGO_URI ||
+"mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-// mongoose.connect(
-// database,
-// {
-//   useUnifiedTopology: true,
-//   useNewUrlParser: true,
-// }
+mongoose.connect(
+database,{
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+}
 // (err, res) => {
 //   if (err) {
 //     console.error(err);
@@ -69,24 +68,25 @@ app.set("view engine", "ejs");
 //     console.log("Database terhubung");
 //   }
 // }
-// );
-// mongoose.connection.on("connected", () => {
-//   console.log(`${database} terkoneksi... `);
-// });
-// const db = mongoose.connection; 
-//menyambungkan aplikasi dengan database mongodb
-mongoose.connect(
-  "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  (err, res) => {
-    if (err) {
-      console.error(err);
-      console.log("not connect");
-    } else {
-      console.log("Database terhubung");
-    }
-  }
 );
-const db = mongoose.connection;
+mongoose.connection.on("connected", () => {
+  console.log(`${database} Terkoneksi... `);
+});
+const db = mongoose.connection; 
+
+// menyambungkan aplikasi dengan database mongodb
+// mongoose.connect(
+//   "mongodb+srv://minify:minify1234@cluster0.nodgj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+//   (err, res) => {
+//     if (err) {
+//       console.error(err);
+//       console.log("not connect");
+//     } else {
+//       console.log("Database terhubung");
+//     }
+//   }
+// );
+// const db = mongoose.connection;
 
 //menginisialisasi router untuk digunakan
 const indexRouter = require("./routes/index");
@@ -134,4 +134,5 @@ app.use("/editProfile", editProfileRouter);
 app.listen(PORT, () => {
   console.log(`Server Berjalan di port ${PORT}`);
 }); 
+
 
