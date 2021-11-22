@@ -2,7 +2,7 @@ module.exports = function Wish(oldWish) {
   //atribut dengan nama items
   this.items = oldWish.items || {};
 
-  // function yang digunakan di routes untuk menambahkan product ke wishlist
+  // function yang digunakan di routes index untuk menambahkan product ke wishlist
   this.add = function (item, id) {
     var storedItem = this.items[id];
     // storedItem

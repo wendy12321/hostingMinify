@@ -3,8 +3,8 @@ const brandModel = require("../models/brand");
 const url = require("url");
 
 module.exports = {
+  // fungsi untuk menambah kategori atau brand ke database
   async addCategoryBrand(req, res) {
-    // console.log(req.body);
     if (req.body.type == "category") {
       await categoryModel.create(req.body);
       console.log("Category ditambahkan");
@@ -12,9 +12,8 @@ module.exports = {
       await brandModel.create(req.body);
       console.log("Brand ditambahkan");
     }
-
+    //me-redirect kembali ke dashboard pada tab catalog
     var catalog = true;
-
     res.redirect(
       url.format({
         pathname: "/dashboard",

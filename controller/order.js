@@ -18,6 +18,7 @@ module.exports = {
     console.log(req.session);
     //fungsi untuk menghitung pesanan ke berapa yang telah dibuat di database
     orderModel.count({}, async function (err, count) {
+      //memberi nama pesanan
       order.pesanan = "Pesanan " + (count + 1);
       //buat pesanan
       await orderModel.create(order);

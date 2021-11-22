@@ -20,10 +20,12 @@ module.exports = {
     const email = req.body.email;
     const password = req.body.password;
 
+    //mencari user di database
     const user = await userModel.findOne({
       email: email,
     });
 
+    // jika user belum terdaftar
     if (!user) {
       res.render("pages/login", {
         error: "User is not found",
@@ -31,6 +33,7 @@ module.exports = {
       });
     }
     const userPassword = user.password;
+    //kondisi untuk tipe user
     if (email === "MinifyAdmin@mail.com" && password === "admin") {
       req.session.user = {
         type: "admin",
@@ -60,7 +63,10 @@ module.exports = {
       });
     }
   },
+
+  // fungsi untuk register akun baru
   async register(req, res) {
+    //ambil semua data dalam form register simpan ke object user, set foto profil default untuk user baru
     var user = { ...req.body, imagePath: "/public/image/user.svg" };
     await userModel.create(user);
 

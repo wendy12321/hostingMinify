@@ -32,6 +32,7 @@
         >
           Rincian Pesanan
         </h5>
+        <!-- looping object product -->
         <% Object.keys(orders.items).forEach(function(items){ %>
         <div class="col-6 text-start fs-5">
           <p class="fs-5"><%= orders.items[items].item.name %></p>

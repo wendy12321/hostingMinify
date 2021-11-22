@@ -6,13 +6,8 @@ const Carts = require("../models/cart");
 const Wish = require("../models/wish");
 const Orders = require("../models/order");
 const Best = require("../models/best");
-var Catalog = false;
 
 const router = express.Router();
-
-// router.get("/", (req, res) => {
-//   res.render("pages/index", { title: "Document" });
-// });
 
 router.get("/", async (req, res) => {
   const categories = await Categories.find();
@@ -20,9 +15,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("pages/login", { title: "Login || Minify" });
+  res.render("pages/logIn", { title: "Login || Minify" });
 });
-
 
 router.get("/checkout", (req, res) => {
   res.render("pages/checkout", { title: "Checkout || Minify" });
@@ -103,10 +97,12 @@ router.get("/edit-product", (req, res) => {
 
 //untuk menampilkan page product dan semua product yang ada
 router.get("/product", async (req, res) => {
+  //mengambil data produk, kategori, dan brand yang ada pada database
   var data = await Products.find();
   const brands = await Brands.find({}, { nama: 1, _id: 0 });
   const categories = await Categories.find({}, { nama: 1, _id: 0 });
 
+  //merender page product dan mengirim data produk, kategori, dan brand
   res.render("pages/product", {
     products: data,
     brands,
@@ -117,11 +113,12 @@ router.get("/product", async (req, res) => {
 
 router.post("/productFilter", async (req, res) => {
   var data;
+  //mengambil data kategori, dan brand yang ada pada database
   const brands = await Brands.find({}, { nama: 1, _id: 0 });
   const categories = await Categories.find({}, { nama: 1, _id: 0 });
   var maxPrice;
-  console.log(req.body);
-  //jika filter kategori kosong, maka akan diisi semua kategori dari database
+
+  //jika filter kategori kosong, maka akan diisi nama dari semua kategori dari database
   if (req.body.category == undefined) {
     var result = [];
 
@@ -131,7 +128,7 @@ router.post("/productFilter", async (req, res) => {
 
     req.body.category = result;
   }
-  //jika filter brand kosong, maka akan diisi semua brand dari database
+  //jika filter brand kosong, maka akan diisi nama dari semua brand dari database
   if (req.body.brand == undefined) {
     var result = [];
 
@@ -145,6 +142,7 @@ router.post("/productFilter", async (req, res) => {
   if (req.body.minPrice == "" || req.body.minPrice == undefined) {
     req.body.minPrice = 0;
   }
+
   //jika filter harga maximum kosong, harga diganti menjadi harga paling tinggi dari database
   if (req.body.maxPrice == "" || req.body.maxPrice == undefined) {
     maxPrice = await Products.find({}, { price: 1, _id: 0 })
@@ -152,8 +150,6 @@ router.post("/productFilter", async (req, res) => {
       .limit(1);
     req.body.maxPrice = maxPrice[0].price;
   }
-  var sortParam;
-  var sortVal;
 
   //function untuk sort data product yang telah didapat
   function dynamicSort(property) {
@@ -163,9 +159,6 @@ router.post("/productFilter", async (req, res) => {
       property = property.substr(1);
     }
     return function (a, b) {
-      /* next line works with strings and numbers,
-       * and you may want to customize it to your needs
-       */
       var result =
         a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
       return result * sortOrder;
@@ -182,7 +175,7 @@ router.post("/productFilter", async (req, res) => {
     ],
   });
 
-  //swtich case sorting
+  //switch case sorting
   switch (req.body.sortBy) {
     case "Rate":
       data.sort(dynamicSort("rating"));
@@ -197,7 +190,7 @@ router.post("/productFilter", async (req, res) => {
       data.sort(dynamicSort("rating"));
       break;
   }
-
+  //merender page product dan mengirim data produk yang sudah di-filter, kategori, dan brand
   res.render("pages/product", {
     products: data,
     brands,
@@ -217,6 +210,7 @@ router.get("/details/:id", async (req, res) => {
   });
 });
 
+//untuk menambahkan produk ke dalam best seller
 router.get("/add-to-best/:id", (req, res, next) => {
   const productId = req.params.id;
   const best = new Best(req.session.best ? req.session.best : {});
@@ -237,6 +231,7 @@ router.get("/cart", (req, res) => {
   res.render("pages/cart", { title: "Cart || Minify" });
 });
 
+//untuk menampilkan page new arrival dan semua product yang ada
 router.get("/newArrival", async (req, res) => {
   var data = await Products.find();
   res.render("pages/newArrival", {
@@ -249,6 +244,7 @@ router.get("/Company", (req, res) => {
   res.render("pages/Company", { title: "Company || Minify" });
 });
 
+//menampilkan page register
 router.get("/register", (req, res) => {
   res.render("pages/register", { title: "Register || Minify" });
 });
@@ -289,6 +285,7 @@ router.get("/add-to-cart/:id", (req, res, next) => {
   const cart = new Carts(req.session.cart ? req.session.cart : {});
   //jika user sudah login
   if (req.session.isLoggedIn) {
+    //cari id dari product yang ingin ditambah ke cart
     Products.findById(productId, function (err, product) {
       if (err) {
         return res.redirect("/product");
@@ -316,9 +313,12 @@ router.get("/buyNow/:id", (req, res) => {
       if (err) {
         return res.redirect("/product");
       }
+      //tambah product ke cart
       cart.add(product, product.id);
+      //update session
       req.session.cart = cart;
       console.log(req.session.cart);
+      //langsung ke checkout
       res.redirect("/checkout");
     });
     //jika user belum login

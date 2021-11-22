@@ -14,6 +14,7 @@ router.get("/", function (req, res, next) {
   //jika ada, buat session cart baru simpan dalam object
   var cart = new Carts(req.session.cart);
   res.render("pages/cart", {
+    //render object product, total harga dan jumlah product
     products: cart.generateArray(),
     totalPrice: cart.totalPrice,
     totalQty: cart.totalQty,
